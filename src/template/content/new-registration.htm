@@ -1,0 +1,20 @@
+@{include_php:registration}
+<form method="post">
+	<h2>@{reg_new}</h2>
+	<ul id="registration">
+		<li><span>@{reg_mail}:</span><input type="text" name="email" value="@{registration_email}"></li>
+		<li><span>@{reg_password}:</span><input type="text" name="password" value="@{registration_password}"></li>
+		<li><span>@{reg_repeat_password}:</span><input type="text" name="repeat_password" value="@{registration_repeat_password}"></li>
+		<li><span>@{reg_team_name}:</span><input type="text" name="team" value="@{registration_team}"></li>
+		<li><span>@{reg_about}:</span><textarea name="about">@{registration_about}</textarea></li>
+		<li>
+			<input type="radio" name="league" checked id="sk_league" value="1"><label for="sk_league">@{reg_skleague}</label>
+			<input type="radio" name="league" id="open_league" value="0"><label for="open_league">@{reg_openleague}</label>
+		</li>
+		<li><input type="submit" name="registration" value="@{reg_register}"></li>
+	</ul>
+	@{registration_error}
+</form>
+
+ <p>@{gdpr}</p>
+

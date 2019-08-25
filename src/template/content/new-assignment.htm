@@ -1,0 +1,67 @@
+@{include_php:new_assignment}
+<form method="post" id="assignment_form" enctype="multipart/form-data">
+	<h2>@{new_assignment_sk}</h2>
+	<div>
+		<input type="text" value="@{new_assignment_sk_title}" name="sk_title">
+	</div>
+	<h2>@{new_assignment_en}</h2>
+	<div>
+		<input type="text" value="@{new_assignment_en_title}" name="en_title">
+	</div>
+	<h2>@{new_assignment_de}</h2>
+	<div>
+		<input type="text" value="@{new_assignment_de_title}" name="de_title">
+	</div>
+	<h2>@{new_assignment_description_sk}</h2>
+	<div>
+		<textarea name="sk_assignment">@{new_assignment_sk_description}</textarea>
+	</div>
+	<h2>@{new_assignment_description_en}</h2>
+	<div>
+		<textarea name="en_assignment">@{new_assignment_en_description}</textarea>
+	</div>
+	<h2>@{new_assignment_description_de}</h2>
+	<div>
+		<textarea name="de_assignment">@{new_assignment_de_description}</textarea>
+	</div>
+	<h2>@{new_assignment_images}</h2>
+	<p>
+		<ul id="upload_image">
+@{get_images_assignment}
+		</ul>
+		<input type="file" name="upload[]" id="upload_image_input" multiple="multiple">
+	</p>
+	<h2>@{new_assignment_youtube}</h2>
+	<p>
+		<ul id="upload_image">
+@{get_youtube_videos}
+		</ul>
+		<input type="text" name="youtube_link" id="youtube_link" placeholder="http://www.youtube.com/watch?v=">
+		<input type="submit" name="add_youtube" value="Add youtube link">
+	</p>
+	<p>
+		<input type="hidden" name="save_assignment" value="ok">
+		<input type="hidden" name="id_assignment" value="@{new_assignment_id}">
+		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-file"></span> @{new_assignment_save}</button>
+		<a href="./?page=assignments-overview" class="btn btn-warning">@{new_assignment_overview}</a>
+	</p>
+</form>
+<script src="js/tinymce/tinymce.min.js"></script>
+<script>
+// TINYmce editor
+tinymce.init({
+	selector: "textarea",
+	height: 400,
+	theme: "modern",
+	convert_urls: false,
+	plugins: [
+		"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+		"searchreplace wordcount visualblocks visualchars code fullscreen",
+		"insertdatetime media nonbreaking save table contextmenu directionality",
+		"emoticons template paste textcolor colorpicker textpattern imagetools codesample toc"
+	],
+	toolbar1: "undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+	toolbar2: "print preview media | forecolor backcolor emoticons | codesample",
+	extended_valid_elements: "+iframe[src|width|height|name|align|class]"
+});
+</script>

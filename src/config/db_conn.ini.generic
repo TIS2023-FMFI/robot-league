@@ -1,0 +1,5 @@
+;database connect
+server		= your_db_server
+name		= your_db_user_name
+password	= your_db_password
+database	= your_db_database

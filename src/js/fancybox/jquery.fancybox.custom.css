@@ -1,0 +1,19 @@
+.fancybox-lock {
+    margin: 0 !important;
+}
+
+.fancybox-nav {
+    width: 60px;       
+}
+
+.fancybox-nav span {
+    visibility: visible;
+}
+
+.fancybox-next {
+    right: -40px;
+}
+
+.fancybox-prev {
+    left: -40px;
+}

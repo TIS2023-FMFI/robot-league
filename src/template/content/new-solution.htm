@@ -1,0 +1,59 @@
+@{permission:0:0:1}
+@{include_php:new_solution}
+@{save_ok}
+<form method="post" id="assignment_form" enctype="multipart/form-data">
+	<h2>@{solution_assignment}: @{assignment_title}</h2>
+	<p class="fix_height_solution">
+		<textarea name="solution" id="solution">@{solution_text}</textarea>
+	</p>
+	<h2>@{solution_programs}</h2>
+	<ul class="upload_image">
+@{get_programs_solution}
+	</ul>
+	<input type="file" class="multiupload" name="upload_programs[]" multiple="multiple">
+	<h2>@{solution_videos}</h2>
+	<ul class="upload_image">
+@{get_youtube_videos}
+	</ul>
+	<p>
+		<input type="text" name="youtube_link" id="youtube_link" placeholder="http://www.youtube.com/watch?v=">
+		<input type="submit" name="add_youtube" value="@{solution_addyoutube}">
+	</p>
+	<h2>@{solution_photos}</h2>
+	<ul id="photo_gallery" class="upload_image">
+@{get_images_solution}
+	</ul>
+	<input type="file" class="multiupload" name="upload_images[]" multiple="multiple">
+	<p>
+		<input type="hidden" name="save_solution" value="ok">
+		<input type="hidden" name="id_assignment" value="@{new_assignment_id}">
+		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-file"></span> @{solution_save}</button>
+		<a href="./?page=assignment&id=@{assignment_group_id}" class="btn btn-warning">@{solution_overview}</a>
+	</p>
+</form>
+<script src="js/tinymce/tinymce.min.js"></script>
+<script>
+tinymce.init({
+	selector: 'textarea',
+	height: 400,
+	menubar: false,
+	plugins: [
+		'advlist autolink lists charmap print preview anchor',
+		'searchreplace visualblocks code fullscreen textcolor',
+		'insertdatetime media table contextmenu paste code'
+	],
+	toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor fontsizeselect',
+});
+</script>
+
+<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen">
+<link rel="stylesheet" href="js/fancybox/jquery.fancybox.custom.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$("#photo_gallery li a").fancybox({
+	afterShow: function () {
+		var url = $(this).attr("href");
+		$(".fancybox-image").wrap("<a href='" + url + "' target='_blank' />");
+	}
+});
+</script>

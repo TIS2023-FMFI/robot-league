@@ -1,0 +1,23 @@
+				<a href="#" id="loginBtn" class="btn navbar-btn btn-success navbar-right">@{nav_login}</a>
+				<form action="@{current_url}" method="post">
+					<ul id="loginBox" class="hide">
+						<li>
+							<label for="mail">@{nav_account_mail}:</label>
+							<input type="text" id="mail" name="mail">
+						</li>
+						<li>
+							<label for="password">@{nav_account_password}:</label>
+							<input type="password" id="password" name="password">
+						</li>
+						<li class="btn-group pull-right">
+							<a href="?page=new-registration" class="btn btn-warning">@{nav_account_registration}</a>
+							<input type="hidden" name="login" value="ok">
+							<input type="hidden" name="reset" value="@{nav_reset_password}">
+							<input type="submit" class="btn btn-warning" value="@{nav_account_submit}">
+							<input name="rstpsswd" type="submit" class="btn btn-warning" value="@{nav_reset_password}">
+						</li>
+						<li>
+
+						</li>
+					</ul>
+				</form>

@@ -1,0 +1,40 @@
+	<div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="@{path}">@{nav_band}</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-menubuilder">
+				<ul class="nav navbar-nav navbar-left">
+					<li class="menu-item dropdown">
+						<a href="?page=assignments" class="dropdown-toggle" data-toggle="dropdown">@{nav_assingments}<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+@{include_php:menu_assignments}
+						</ul>
+					</li>
+					<li>
+						<a href="?page=results">@{nav_results}</a>
+					</li>
+@{include_php:admin_menu}
+					<li>
+						<a href="?page=archive" class="dropdown-toggle" data-toggle="dropdown">@{nav_archive}<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+@{include_php:menu_archive}
+						</ul>
+					</li>
+					<li>
+						<a href="@{url_change_language}">@{nav_language}</a>
+					</li>
+					<li>
+						<a href="@{url_change_language2}">@{nav_language2}</a>
+					</li>
+				</ul>
+@{include_php:account}
+			</div>
+		</div>
+	</div>
