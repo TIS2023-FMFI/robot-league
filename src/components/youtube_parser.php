@@ -8,12 +8,12 @@ class Youtube {
 
 
 	function __construct($youtube_link = null) {
-		$this->set($youtube_link);
+		$this->set(trim($youtube_link));
 	}
 
 	
 	public function set($youtube_link) {
-		$this->youtube_link = $youtube_link;
+		$this->youtube_link = trim($youtube_link);
 	}
 
 
