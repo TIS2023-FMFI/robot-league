@@ -22,6 +22,12 @@ if (isset($_GET["min"])) {
 	    $image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/small/" . $row["id"] . ".png";
             if (!file_exists($image_path)) {
 	      $image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/small/" . $row["id"] . ".PNG";
+              if (!file_exists($image_path)) {
+	        $image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/small/" . $row["id"] . ".glb";
+                if (!file_exists($image_path)) {
+	          $image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/small/" . $row["id"] . ".GLB";
+                }
+              }
             }
           }
         }
@@ -33,6 +39,12 @@ if (isset($_GET["min"])) {
 	    $image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/big/" . $row["id"] . ".png";
 	    if (!file_exists($image_path)) {
 		$image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/big/" . $row["id"] . ".PNG";
+	        if (!file_exists($image_path)) {
+	   	    $image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/big/" . $row["id"] . ".glb";
+	            if (!file_exists($image_path)) {
+	   	        $image_path = "../attachments/solutions/" . $row["id_solution"] . "/images/big/" . $row["id"] . ".GLB";
+                    }
+                }
             }
           }
 	}
@@ -45,6 +57,8 @@ switch($row["extension"]) {
     case "jpeg":
     case "JPG":
     case "jpg": $type="image/jpeg"; break;
+    case "glb":
+    case "GLB": $type="model/gltf-binary"; break;
     default:
 }
 
