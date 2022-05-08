@@ -7,14 +7,12 @@ class Translate {
 		$this->set("error-404-content", "Skúste to neskôr.", "Try later again.", "Versuchen Sie es später erneut");
 		
 		
-		error_log("wtf");
 		// Header
 		$this->set("title", "Robotická liga", "Robot league", "Roboterliga");
 		$this->set("keywords", "lego, robotická liga", "robot league, lego", "roboterliga", "lego");
 		$this->set("author", "FMFI UK Bratislava", "Comenius University Bratislava", "Comenius University Bratislava");
 
 		
-		error_log("wtf");
 		// Navigator
 		$this->set("nav_band", "Robotická Liga", "Robot League", "Roboterliga");
 		$this->set("nav_assingments", "Zadania", "Assignments", "Aufgaben");
@@ -29,7 +27,6 @@ class Translate {
 		$this->set("nav_reset_password", "Poslať nové heslo", "Send new password", "Neues Passwort senden");
 		
 		
-		error_log("wtf");
 		// Navigator dropdown menu		
 		$this->set("nav_assignments_assignment", "Zadanie", "Assignment", "Aufgabe");
 		$this->set("nav_assignments_overview", "Prehľad zadaní", "Assignments overview", "Aufgaben Überblick");
@@ -43,7 +40,6 @@ class Translate {
                 $this->set("nav_account_submit", "Prihlásiť", "Login", "Login");
                 $this->set("nav_account_logout", "Odhlásiť", "Logout", "Ausloggen");
     
-		error_log("wtf");
                 // Navigator - Registration
                 $this->set("reg_new", "Nová registrácia", "New registration", "Neue Anmeldung");
                 $this->set("reg_mail", "E-mail", "E-mail", "E-mail");
@@ -53,6 +49,8 @@ class Translate {
                 $this->set("reg_about", "Niečo o vás", "About your team", "Über ihr Team");
                 $this->set("reg_skleague", "Slovenská liga", "Slovak league", "Slowakische Liga");
                 $this->set("reg_openleague", "Open liga", "Open league", "Open Liga");
+                $this->set("reg_rabbits", "Zajace", "Rabbits", "Hasen");
+		$this->set("reg_tigers", "Tigre", "Tigers", "Tiger");
                 $this->set("reg_register", "Zaregistrovať sa", "Proceed with registration", "Anmelden");
                 $this->set("gdpr", "GDPR: Robotická liga je on-line platforma na zdieľanie riešení. Za obsah a súhlas " .
                                    " s publikovaním riešení, fotodokumentácie a videodokumentácie zodpovedá ten, kto " .
@@ -82,7 +80,6 @@ class Translate {
                                    " aus unserem Archiv, senden Sie eine E-Mail an: info@robotika.sk. Mit der Teilnahme an diesem Wettbewerb bestätigen " .
                                    " Sie, dass Sie diesen Regeln zustimmen und diese einhalten.");
     
-		error_log("wtf");
                 // Assignment content
                 $this->set("assignment_task", "Úloha", "Task", "Auftrag");
                 $this->set("assignment_deadline", "Riešenie možno odovzdávať do", "Deadline of this assignment is set to", "Die Frist für diese Aufgabe ist festgelegt auf");
@@ -91,7 +88,6 @@ class Translate {
                 $this->set("assignment_solutions_update", "Odovzdať riešenie k úlohe", "Upload solution for task", "Lösung für Aufgabe hochladen");
     
     
-		error_log("wtf");
                 // New assignment
                 $this->set("new_assignment_sk", "Názov zadania (SK)", "New assignment (SK)", "Neue Aufgabe (SK)");
                 $this->set("new_assignment_en", "Názov zadania (EN)", "New assignment (EN)", "Neue_Aufgabe (EN)");
@@ -104,7 +100,6 @@ class Translate {
                 $this->set("new_assignment_save", "Uložiť zadanie", "Save assignment", "Aufgabe speichern");
                 $this->set("new_assignment_overview", "Prehľad zadaní", "Assignments overview", "Aufgaben Überblick");
 		
-		error_log("wtf");
 		// Assignment overview
 		$this->set("assignment_overview_list", "Zoznam zadaní", "Assignment list", "Aufgabenliste");
 		$this->set("assignment_overview_new", "Nové zadanie", "New assignment", "Neue Aufgabe");
@@ -116,7 +111,6 @@ class Translate {
 		$this->set("assignment_overview_delete", "Zmazať", "Delete", "Löschen");
 		
 		
-		error_log("wtf");
 		// New solutions
 		$this->set("solution_assignment", "Zadanie", "Assignment", "Aufgabe");
 		$this->set("solution_save_result", "Riešenie bolo uložené", "Solution has been saved", "Lösung wurde gespeichert");
@@ -134,7 +128,6 @@ class Translate {
 		$this->set("save_rating", "Uložiť hodnotenie", "Save rating", "Bewertung speichern");
 		$this->set("rating_was_saved", "Hodnotenie bolo uložené.", "Rating was saved.", "Bewertung wurde gespeichert");
 
-		error_log("wtf");
 		// Results
 		$this->set("res_sk_liga_max", "Slovenská liga", "Slovak league", "Slowakische Liga");
 		$this->set("res_open_liga_max", "Open liga", "Open league", "Open Liga");

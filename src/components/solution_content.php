@@ -14,6 +14,7 @@ if ($expired_assignment == 1 && $this->get("user", "admin") != 1) {
 if (Security::post("create_comment") == "ok") {
 	foreach ($_POST["comment"] AS $key => $value) {
 		$rating = $_POST["rating"][$key];
+		$category = $_POST["category"];
 		if ($rating > 3) $rating = 3;
 		if ($rating < 0) $rating = 0;
 
@@ -25,15 +26,17 @@ if (Security::post("create_comment") == "ok") {
 			$this->database->set_comment(
 				$key,
 				$this->get("user", "id"),
-				str_replace("\n", "<br>", $_POST["comment"][$key]),
-				$rating
+				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
+				$rating,
+				$category
 			);
 		} else {
 			$this->database->update_comment(
 				$key,
 				$this->get("user", "id"),
-				str_replace("\n", "<br>", $_POST["comment"][$key]),
-				$rating
+				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
+				$rating,
+				$category
 			);
 		}
 	}
@@ -112,6 +115,7 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 			$html.= "<h2>" . $this->get("solution_rating") . ":</h2>";
 			$html.= "<p class='pre_commnets'>" . html_entity_decode($get_coment["text"]) . "</p>";			
 		}
+		$html.="<input type='hidden' name='category' value='0'>";
 	}
 	
 	//for admin
@@ -145,7 +149,9 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 			$admin_commented = true;
 		}
 		
-		$html.= "</li></ul>";
+		$html.= "</li>";
+		$html.= "<li>Kategória: <select name='category'><option value='1'>Zajace</option><option value='2'>Tigre</option></select></li>";
+		$html.= "</ul>";
 	}
 }
 

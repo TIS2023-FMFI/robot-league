@@ -474,9 +474,9 @@ class Database {
 	}
 	
 	
-	public function update_comment($solution, $id_user, $text, $points) {
+	public function update_comment($solution, $id_user, $text, $points, $category) {
 		$sql = "UPDATE comments ";
-		$sql.= "SET text = '" . $text . "', points = '" . $points . "' ";
+		$sql.= "SET text = '" . $text . "', points = '" . $points . "', category= " . $category . " ";
 		$sql.= "WHERE id_solution = '" . $solution . "' AND id_user = '" . $id_user . "'";
 		mysqli_query($this->conn, $sql);
 	}
@@ -588,7 +588,7 @@ class Database {
 	}
 
 
-    public function get_team_results($year, $team_id) {
+    public function get_team_results($year, $team_id, $cat) {
         $sql = "SELECT G.id, ( ";
         $sql.= "SELECT C.points ";
         $sql.= "FROM assignments AS A  ";
@@ -596,7 +596,7 @@ class Database {
         $sql.= "ON A.id = S.id_assignment  ";
         $sql.= "LEFT JOIN comments AS C ";
         $sql.= "ON S.id = C.id_solution ";
-        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 ";
+        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 AND C.category = '" . $cat . "' ";
         $sql.= "ORDER BY points desc  ";
         $sql.= "LIMIT 1 ";
         $sql.= ") AS points,( ";
@@ -606,7 +606,7 @@ class Database {
         $sql.= "ON A.id = S.id_assignment  ";
         $sql.= "LEFT JOIN comments AS C ";
         $sql.= "ON S.id = C.id_solution ";
-        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 ";
+        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 AND C.category = '" . $cat . "' ";
         $sql.= "ORDER BY points desc, best desc  ";
         $sql.= "LIMIT 1 ";
         $sql.= ") AS best ";
@@ -616,7 +616,7 @@ class Database {
         return mysqli_query($this->conn, $sql) ;
     }
 
-    public function get_team_results_worse($year, $team_id) {
+    public function get_team_results_worse($year, $team_id, $cat) {
         $sql = "SELECT G.id, ( ";
         $sql.= "SELECT C.points ";
         $sql.= "FROM assignments AS A  ";
@@ -624,7 +624,7 @@ class Database {
         $sql.= "ON A.id = S.id_assignment  ";
         $sql.= "LEFT JOIN comments AS C ";
         $sql.= "ON S.id = C.id_solution ";
-        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 ";
+        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 AND C.category = '" . $cat . "' ";
         $sql.= "ORDER BY points desc  ";
         $sql.= "LIMIT 1 OFFSET 1";
         $sql.= ") AS points,( ";
@@ -634,7 +634,7 @@ class Database {
         $sql.= "ON A.id = S.id_assignment  ";
         $sql.= "LEFT JOIN comments AS C ";
         $sql.= "ON S.id = C.id_solution ";
-        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 ";
+        $sql.= "WHERE A.id_group = G.id AND S.id_user = '" . $team_id . "' AND C.id_user = 1 AND C.category = '" . $cat . "' ";
         $sql.= "ORDER BY points asc  ";
         $sql.= "LIMIT 1 ";
         $sql.= ") AS best ";

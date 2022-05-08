@@ -1,6 +1,6 @@
 <?php
 
-function showResultsTable($skleague,$team_order, $team_info, $team_score, $min_max, $that, $year) {
+function showResultsTable($skleague,$team_order, $team_info, $team_score, $min_max, $that, $year, $cat) {
     $html = "<div class='teamScoreTotal lbl'>Sum</div>";
     $html.= "</div>";
 
@@ -57,11 +57,14 @@ function showResultsTable($skleague,$team_order, $team_info, $team_score, $min_m
       if ($skleague==0) $league_name = $that->get("res_open_liga_min"); 
     }
     $league_name .= " " . $year;
+    if ($cat == 1) $category_name = " - " . $that->get("reg_rabbits");
+    else if ($cat == 2) $category_name = " - " . $that->get("reg_tigers");
+    else $category_name = "";
 
     $head = "";
     $head .= "<div id='resultsTable'>";
     $head .= "<div id='resultsTableLabel' class='teamResults'>";
-    $head .= "<div class='teamName lbl'>".$league_name."</div>";
+    $head .= "<div class='teamName lbl'>".$league_name. $category_name . "</div>";
     $head .= "<div class='allScores lbl'>";
     for ($i=1; $i<=$count_cel; $i++) {
         $head .= "<div class='score lbl'>". $i .".</div>";
@@ -78,69 +81,75 @@ $html = "";
 $year = Security::get("year");
 if (!$year) $year = Date("Y");
 
-$team_info = array();
-$team_score = array();
-$team_order = array();
+for ($cat = 1; $cat <= 2; $cat++)
+{
+    if ($year < 2022) $cat = 0;
 
-$get_teams = $this->database->get_teams($year);
-if (mysqli_num_rows($get_teams) == 0) {
-    $year--;
+    $team_info = array();
+    $team_score = array();
+    $team_order = array();
+    
     $get_teams = $this->database->get_teams($year);
-}
-
-while($r = mysqli_fetch_assoc($get_teams)) {
-    // key - id; values - name, league, total_score
-    $team_info[$r["id_user"]] = array( "name" => $r["name"], "league" => $r["sk_league"], "score" => 0);
-}
-
-foreach ($team_info as $key => $value){
-    $get_results = $this->database->get_team_results($year,$key);
-    $sum = 0;
-    while($r = mysqli_fetch_assoc($get_results)) {
-        $points =  floatval($r["points"]);
-        $sum += $points;
-        if ($r["points"]==NULL) $points = "-";
-        $team_score[$key][$r["id"]] = array($points,$r["best"]);
+    if (mysqli_num_rows($get_teams) == 0) {
+        $year--;
+        $get_teams = $this->database->get_teams($year);
     }
-    $team_info[$key]["score"] = $sum;
-    $team_order[$key] = $sum;
-}
-
-arsort($team_order);
-
-
-$html.= showResultsTable(1,$team_order,$team_info,$team_score, 1, $this, $year);
-$html.= showResultsTable(0,$team_order,$team_info,$team_score, 1, $this, $year);
-
-
-if ($year > 2016) {
-
-	$get_teams = $this->database->get_teams($year);
-	while($r = mysqli_fetch_assoc($get_teams)) {
-		// key - id; values - name, league, total_score
-		$team_info[$r["id_user"]] = array( "name" => $r["name"], "league" => $r["sk_league"], "score" => 0);
-	}
-
-	foreach ($team_info as $key => $value){
-		$get_results = $this->database->get_team_results_worse($year,$key);
-		$sum = 0;
-		while($r = mysqli_fetch_assoc($get_results)) {
-			$points =  floatval($r["points"]);
-			$sum += $points;
-			if ($r["points"]==NULL) $points = "-";
-			$team_score[$key][$r["id"]] = array($points,$r["best"]);
-		}
-		$team_info[$key]["score"] = $sum;
-		$team_order[$key] = $sum;
-	}
-
-	arsort($team_order);
-
-
-	$html.= showResultsTable(1,$team_order,$team_info,$team_score, 0, $this, $year);
-	$html.= showResultsTable(0,$team_order,$team_info,$team_score, 0, $this, $year);
-
-	$html.= "</div>";
+    
+    while($r = mysqli_fetch_assoc($get_teams)) {
+        // key - id; values - name, league, total_score
+        $team_info[$r["id_user"]] = array( "name" => $r["name"], "league" => $r["sk_league"], "score" => 0);
+    }
+    
+    foreach ($team_info as $key => $value){
+        $get_results = $this->database->get_team_results($year,$key,$cat);
+        $sum = 0;
+        while($r = mysqli_fetch_assoc($get_results)) {
+            $points =  floatval($r["points"]);
+            $sum += $points;
+            if ($r["points"]==NULL) $points = "-";
+            $team_score[$key][$r["id"]] = array($points,$r["best"]);
+        }
+        $team_info[$key]["score"] = $sum;
+        $team_order[$key] = $sum;
+    }
+    
+    arsort($team_order);
+    
+    
+    $html.= showResultsTable(1,$team_order,$team_info,$team_score, 1, $this, $year, $cat);
+    $html.= showResultsTable(0,$team_order,$team_info,$team_score, 1, $this, $year, $cat);
+    
+    
+    if ($year > 2016) {
+    
+    	$get_teams = $this->database->get_teams($year);
+    	while($r = mysqli_fetch_assoc($get_teams)) {
+    		// key - id; values - name, league, total_score
+    		$team_info[$r["id_user"]] = array( "name" => $r["name"], "league" => $r["sk_league"], "score" => 0);
+    	}
+    
+    	foreach ($team_info as $key => $value){
+    		$get_results = $this->database->get_team_results_worse($year,$key,$cat);
+    		$sum = 0;
+    		while($r = mysqli_fetch_assoc($get_results)) {
+    			$points =  floatval($r["points"]);
+    			$sum += $points;
+    			if ($r["points"]==NULL) $points = "-";
+    			$team_score[$key][$r["id"]] = array($points,$r["best"]);
+    		}
+    		$team_info[$key]["score"] = $sum;
+    		$team_order[$key] = $sum;
+    	}
+    
+    	arsort($team_order);
+    
+    
+    	$html.= showResultsTable(1,$team_order,$team_info,$team_score, 0, $this, $year, $cat);
+    	$html.= showResultsTable(0,$team_order,$team_info,$team_score, 0, $this, $year, $cat);
+    
+    	$html.= "</div>";
+    }
+    if ($year < 2022) break; // no tiger/rabbits categories
 }
 
 return $html;

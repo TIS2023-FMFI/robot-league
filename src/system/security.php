@@ -17,6 +17,12 @@ class Security {
 		return NULL;
 	}
 	
+	function whatever($something) {
+		if (isset($something)) {
+			return stripslashes(htmlspecialchars($something, ENT_QUOTES));
+		}
+		return NULL;
+	}
 	
 	function post_db($key) {
 		if (isset($_POST[$key])) {
