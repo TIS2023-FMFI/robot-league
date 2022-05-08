@@ -56,7 +56,9 @@ class Youtube {
 
 	public function get_id() {
 		if ($this->valid()) {
-			if ($this->detect_url("youtu.be")) {
+			if ($this->detect_url("shorts")) {
+				return str_replace("shorts/", "", $this->get_part("path"));
+			} else if ($this->detect_url("youtu.be")) {
 				return str_replace("/", "", $this->get_part("path"));
 			} else if ($this->detect_url("youtube.com") || $this->detect_url("youtube-nocookie.com")) {
 				if ($this->is_embed()) {
