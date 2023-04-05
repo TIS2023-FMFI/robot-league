@@ -30,6 +30,10 @@ class Youtube {
 	}
 
 
+	private function detect_shorts() {
+		return strpos($this->get_part("path"), "shorts") !== false;
+	}
+
 	private function detect_url($url) {
 		return strpos($this->get_host(), $url) !== false;
 	}
@@ -56,8 +60,8 @@ class Youtube {
 
 	public function get_id() {
 		if ($this->valid()) {
-			if ($this->detect_url("shorts")) {
-				return str_replace("shorts/", "", $this->get_part("path"));
+			if ($this->detect_shorts()) {
+				return str_replace("/shorts/", "", $this->get_part("path"));
 			} else if ($this->detect_url("youtu.be")) {
 				return str_replace("/", "", $this->get_part("path"));
 			} else if ($this->detect_url("youtube.com") || $this->detect_url("youtube-nocookie.com")) {
