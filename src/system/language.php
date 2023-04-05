@@ -10,7 +10,7 @@ class Language {
 
 	function __construct() {
 		$this->initialize();
-		$this->set();
+		Language::set();
 	}
 
 
@@ -21,7 +21,7 @@ class Language {
 	}
 	
 	
-	private function language_detection() {
+	private static function language_detection() {
 		$detect = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
 		if ($detect == "sk" || $detect == "cs") {
 			return self::SK;
@@ -33,12 +33,12 @@ class Language {
 	}
 
 
-	function get() {
+	static function get() {
 		return $_SESSION["lang"];
 	}
 
 
-	function set() {
+	static function set() {
 		if (isset($_GET["lang"])) {
 			if ($_GET["lang"] == "en") {
 				$_SESSION["lang"] = self::EN;
