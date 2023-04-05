@@ -134,7 +134,9 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 			$ratio+= $comment_row["points"];
 		}
 		
-		@$ratio/= mysqli_num_rows($get_jury_comments);
+		$num_comments = mysqli_num_rows($get_jury_comments);
+		if ($num_comments == 0) $num_comments = 1;
+		@$ratio/= $num_comments;
 		
 		if (mysqli_num_rows($get_admin_comment) > 0) {
 			$get_admin_comment_row = mysqli_fetch_assoc($get_admin_comment);
