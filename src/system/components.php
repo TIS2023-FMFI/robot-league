@@ -43,7 +43,8 @@ class Components extends Pages {
 
 		$this->set("path", function() {
 			#$url = "//" . $_SERVER["HTTP_X_FORWARDED_SERVER"] . "/rl";
-			$url = "//" . $_SERVER["HTTP_X_FORWARDED_SERVER"];
+			#$url = "//" . $_SERVER["HTTP_X_FORWARDED_SERVER"];
+			$url = "";
 			$url.= str_replace("index.php", "", $_SERVER["PHP_SELF"]);
 			return $url;
 		});
