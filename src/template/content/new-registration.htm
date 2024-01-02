@@ -6,6 +6,18 @@
 		<li><span>@{reg_password}:</span><input type="text" name="password" value="@{registration_password}"></li>
 		<li><span>@{reg_repeat_password}:</span><input type="text" name="repeat_password" value="@{registration_repeat_password}"></li>
 		<li><span>@{reg_team_name}:</span><input type="text" name="team" value="@{registration_team}"></li>
+		<li><span>@{reg_city}:</span><input type="text" name="city" value="@{registration_city}"></li>
+		<li><span>@{reg_street_name}:</span><input type="text" name="street_name" value="@{registration_street}"></li>
+		<li><span>@{reg_zip}:</span><input type="text" name="zip" value="@{registration_zip}"></li>
+		<li>
+			<span>@{reg_category}:</span>
+			<select name="category">
+				<option value="" disabled selected>--------</option>
+				<option value="Zajace">@{reg_rabbits}</option>
+				<option value="Tigre">@{reg_tigers}</option>
+			</select>
+		</li>
+
 		<li><span>@{reg_about}:</span><textarea name="about">@{registration_about}</textarea></li>
 		<li>
 			<input type="radio" name="league" checked id="sk_league" value="1"><label for="sk_league">@{reg_skleague}</label>

@@ -1,0 +1,69 @@
+@{include_php:profile}
+
+<div id="profileDisplay">
+    <div>
+        <span class="profile-item">@{reg_mail}: @{email} </span>
+    </div>
+    <div>
+        <span class="profile-item">@{reg_team_name}: @{team_name} </span>
+    </div>
+    <div>
+        <span class="profile-item">@{reg_address}:  @{street_name} @{zip} @{city} </span>
+    </div>
+    <div>
+        <span class="profile-item">@{reg_category}: @{category} </span>
+    </div>
+    <div>
+        <span class="profile-item">@{reg_about}: @{about}</span>
+    </div>
+    <div>
+        <button onclick="editProfile()">@{prof_edit}</button>
+    </div>
+    <div>
+        <span style="color:red;font-weight:bold">@{profile_error}</span>
+    </div>
+</div>
+
+
+<form method="post" id="profileUpdate" hidden>
+    <h2>@{reg_new}</h2>
+    <ul id="registration">
+        <li><span>@{reg_mail}:</span><input type="text" name="email_update" value="@{email}"></li>
+        <li><span>@{reg_team_name}:</span> <input type="text" name="name_update" value="@{team_name}"></li>
+        <li><span>@{reg_city}:</span><input type="text" name="city_update" value="@{city}"></li>
+        <li><span>@{reg_street_name}:</span><input type="text" name="street_name_update" value="@{street_name}"></li>
+        <li><span>@{reg_zip}:</span><input type="text" name="zip_update" value="@{zip}"></li>
+        <li id="Category">
+            <span>@{reg_category}:</span>
+            <select name="category_update">
+                <option value="@{category}"selected>@{category}</option>
+                <option value="Zajace">@{reg_rabbits}</option>
+                <option value="Tigre">@{reg_tigers}</option>
+            </select>
+        </li>
+        <li><span>@{reg_about}:</span><textarea name="about_update">@{about}</textarea></li>
+        <li><button type="submit" name="profile_update" value="@{reg_register}">@{prof_update}</button>
+            <button type="button" onclick="cancelEdit()">@{prof_cancel}</button></li>
+    </ul>
+    <span style="color:red;font-weight:bold">@{profile_error}</span>
+</form>
+
+<script>
+    function editProfile() {
+        document.getElementById('profileDisplay').style.display = 'none';
+        document.getElementById('profileUpdate').style.display = 'block';
+    }
+
+    function cancelEdit() {
+        document.getElementById('profileUpdate').style.display = 'none';
+        document.getElementById('profileDisplay').style.display = 'block';
+    }
+
+    window.onload = function(){
+        var selectElement = document.getElementById('Category');
+        if('@{solution_exists}'){
+            selectElement.style.display = 'none';
+        }
+    }
+
+</script>

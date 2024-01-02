@@ -1,4 +1,4 @@
-	<div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+<div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="@{path}">@{nav_band}</a>
@@ -28,6 +28,9 @@
 						</ul>
 					</li>
 					<li>
+						<a href="?page=profile">@{nav_profile}</a>
+					</li>
+					<li>
 						<a href="@{url_change_language}">@{nav_language}</a>
 					</li>
 					<li>
@@ -35,7 +38,7 @@
 					</li>
 					<li><a href="https://www.facebook.com/Robotick%C3%A1-liga-na-Slovensku-301093284591/"><img src="fb.png" border="0"></a></li> 
 				</ul>
-@{include_php:account}
+				@{include_php:account}
 			</div>
 		</div>
 	</div>

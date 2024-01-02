@@ -11,7 +11,6 @@ class Parser extends Variables {
 		$this->content = $this->parse($file);
 	}
 
-	
 	private function load_template($file) {
 		if (file_exists("template/" . $file)) {
 			return file_get_contents("template/" . $file);

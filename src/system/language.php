@@ -1,7 +1,6 @@
 <?php
 
 class Language {
-	
 	const SK = 0;
 	const EN = 1;
         const DE = 2;

@@ -18,6 +18,7 @@ class Translate {
 		$this->set("nav_assingments", "Zadania", "Assignments", "Aufgaben");
 		$this->set("nav_results", "Výsledky", "Results", "Ergebnisse");
 		$this->set("nav_archive", "Archív", "Archive", "Archiv");
+        $this->set("nav_profile", "Profil", "Profile", "Profil");
 		$this->set("nav_language", "English", "Deutsch", "Slovensky");
 		$this->set("nav_language2", "Deutsch", "Slovensky", "English");
 		$this->set("nav_login", "Prihlásiť", "Login", "Login");
@@ -30,29 +31,34 @@ class Translate {
 		// Navigator dropdown menu		
 		$this->set("nav_assignments_assignment", "Zadanie", "Assignment", "Aufgabe");
 		$this->set("nav_assignments_overview", "Prehľad zadaní", "Assignments overview", "Aufgaben Überblick");
-                $this->set("nav_assignments_results", "Výsledky", "Results", "Ergebnisse");
+        $this->set("nav_assignments_results", "Výsledky", "Results", "Ergebnisse");
 
 
-                // Navigator - Login
-                $this->set("nav_account_mail", "E-mail", "E-mail", "E-mail");
-                $this->set("nav_account_password", "Heslo", "Password", "Passwort");
-                $this->set("nav_account_registration", "Registrácia", "Registration", "Anmeldung");
-                $this->set("nav_account_submit", "Prihlásiť", "Login", "Login");
-                $this->set("nav_account_logout", "Odhlásiť", "Logout", "Ausloggen");
+        // Navigator - Login
+        $this->set("nav_account_mail", "E-mail", "E-mail", "E-mail");
+        $this->set("nav_account_password", "Heslo", "Password", "Passwort");
+        $this->set("nav_account_registration", "Registrácia", "Registration", "Anmeldung");
+        $this->set("nav_account_submit", "Prihlásiť", "Login", "Login");
+        $this->set("nav_account_logout", "Odhlásiť", "Logout", "Ausloggen");
     
-                // Navigator - Registration
-                $this->set("reg_new", "Nová registrácia", "New registration", "Neue Anmeldung");
-                $this->set("reg_mail", "E-mail", "E-mail", "E-mail");
-                $this->set("reg_password", "Heslo", "Password", "Passwort");
-                $this->set("reg_repeat_password", "Zopakuj heslo", "Repeat password", "Passwort wiederholen");
-                $this->set("reg_team_name", "Názov tímu", "Team name", "Teamname");
-                $this->set("reg_about", "Niečo o vás", "About your team", "Über ihr Team");
-                $this->set("reg_skleague", "Slovenská liga", "Slovak league", "Slowakische Liga");
-                $this->set("reg_openleague", "Open liga", "Open league", "Open Liga");
-                $this->set("reg_rabbits", "Zajace", "Rabbits", "Hasen");
-		$this->set("reg_tigers", "Tigre", "Tigers", "Tiger");
-                $this->set("reg_register", "Zaregistrovať sa", "Proceed with registration", "Anmelden");
-                $this->set("gdpr", "GDPR: Robotická liga je on-line platforma na zdieľanie riešení. Za obsah a súhlas " .
+        // Navigator - Registration
+        $this->set("reg_new", "Nová registrácia", "New registration", "Neue Anmeldung");
+        $this->set("reg_mail", "E-mail", "E-mail", "E-mail");
+        $this->set("reg_password", "Heslo", "Password", "Passwort");
+        $this->set("reg_repeat_password", "Zopakuj heslo", "Repeat password", "Passwort wiederholen");
+        $this->set("reg_team_name", "Názov tímu", "Team name", "Teamname");
+        $this->set("reg_address", "Adresa", "Address", "Adresse");
+        $this->set("reg_city", "Mesto", "City", "Stadt");
+        $this->set("reg_street_name", "Ulica", "Street", "Straße");
+        $this->set("reg_zip", "PSČ", "ZIP Code", "PLZ");
+        $this->set("reg_category", "Ketegória", "Category", "Kategorie");
+        $this->set("reg_about", "Niečo o vás", "About your team", "Über ihr Team");
+        $this->set("reg_skleague", "Slovenská liga", "Slovak league", "Slowakische Liga");
+        $this->set("reg_openleague", "Open liga", "Open league", "Open Liga");
+        $this->set("reg_rabbits", "Zajace", "Rabbits", "Hasen");
+        $this->set("reg_tigers", "Tigre", "Tigers", "Tiger");
+        $this->set("reg_register", "Zaregistrovať sa", "Proceed with registration", "Anmelden");
+        $this->set("gdpr", "GDPR: Robotická liga je on-line platforma na zdieľanie riešení. Za obsah a súhlas " .
                                    " s publikovaním riešení, fotodokumentácie a videodokumentácie zodpovedá ten, kto " .
                                    " riešenia na stránku nahral. Riešenia zostávajú v archíve zverejnené neobmedzene. " .
                                    " Organizátori si vyhradzujú právo vymazať akýkoľvek obsah v prípade potreby a potom, čo " . 
@@ -80,25 +86,25 @@ class Translate {
                                    " aus unserem Archiv, senden Sie eine E-Mail an: info@robotika.sk. Mit der Teilnahme an diesem Wettbewerb bestätigen " .
                                    " Sie, dass Sie diesen Regeln zustimmen und diese einhalten.");
     
-                // Assignment content
-                $this->set("assignment_task", "Úloha", "Task", "Auftrag");
-                $this->set("assignment_deadline", "Riešenie možno odovzdávať do", "Deadline of this assignment is set to", "Die Frist für diese Aufgabe ist festgelegt auf");
-                $this->set("assignment_time_format", "d.m.Y H:i:s", "Y-m-d H:i:s", "d.m.Y H:i:s");
-                $this->set("assignment_solutions", "Riešenia", "Solutions", "Lösungen");
-                $this->set("assignment_solutions_update", "Odovzdať riešenie k úlohe", "Upload solution for task", "Lösung für Aufgabe hochladen");
+        // Assignment content
+        $this->set("assignment_task", "Úloha", "Task", "Auftrag");
+        $this->set("assignment_deadline", "Riešenie možno odovzdávať do", "Deadline of this assignment is set to", "Die Frist für diese Aufgabe ist festgelegt auf");
+        $this->set("assignment_time_format", "d.m.Y H:i:s", "Y-m-d H:i:s", "d.m.Y H:i:s");
+        $this->set("assignment_solutions", "Riešenia", "Solutions", "Lösungen");
+        $this->set("assignment_solutions_update", "Odovzdať riešenie k úlohe", "Upload solution for task", "Lösung für Aufgabe hochladen");
     
     
-                // New assignment
-                $this->set("new_assignment_sk", "Názov zadania (SK)", "New assignment (SK)", "Neue Aufgabe (SK)");
-                $this->set("new_assignment_en", "Názov zadania (EN)", "New assignment (EN)", "Neue_Aufgabe (EN)");
-                $this->set("new_assignment_de", "Názov zadania (DE)", "New assignment (DE)", "Neue_Aufgabe (DE)");
-                $this->set("new_assignment_description_sk", "Popis zadania (SK)", "Assignment description (SK)", "Aufgabe Beschreibung (SK)");
-                $this->set("new_assignment_description_en", "Popis zadania (EN)", "Assignment description (EN)", "Aufgabe Beschreibung (EN)");
-                $this->set("new_assignment_description_de", "Popis zadania (DE)", "Assignment description (DE)", "Aufgabe Beschreibung (DE)");
-                $this->set("new_assignment_images", "Obrázky", "Images", "Bilder");
-                $this->set("new_assignment_youtube", "Youtube linky", "Youtube links", "Youtube links");
-                $this->set("new_assignment_save", "Uložiť zadanie", "Save assignment", "Aufgabe speichern");
-                $this->set("new_assignment_overview", "Prehľad zadaní", "Assignments overview", "Aufgaben Überblick");
+        // New assignment
+        $this->set("new_assignment_sk", "Názov zadania (SK)", "New assignment (SK)", "Neue Aufgabe (SK)");
+        $this->set("new_assignment_en", "Názov zadania (EN)", "New assignment (EN)", "Neue_Aufgabe (EN)");
+        $this->set("new_assignment_de", "Názov zadania (DE)", "New assignment (DE)", "Neue_Aufgabe (DE)");
+        $this->set("new_assignment_description_sk", "Popis zadania (SK)", "Assignment description (SK)", "Aufgabe Beschreibung (SK)");
+        $this->set("new_assignment_description_en", "Popis zadania (EN)", "Assignment description (EN)", "Aufgabe Beschreibung (EN)");
+        $this->set("new_assignment_description_de", "Popis zadania (DE)", "Assignment description (DE)", "Aufgabe Beschreibung (DE)");
+        $this->set("new_assignment_images", "Obrázky", "Images", "Bilder");
+        $this->set("new_assignment_youtube", "Youtube linky", "Youtube links", "Youtube links");
+        $this->set("new_assignment_save", "Uložiť zadanie", "Save assignment", "Aufgabe speichern");
+        $this->set("new_assignment_overview", "Prehľad zadaní", "Assignments overview", "Aufgaben Überblick");
 		
 		// Assignment overview
 		$this->set("assignment_overview_list", "Zoznam zadaní", "Assignment list", "Aufgabenliste");
@@ -123,8 +129,10 @@ class Translate {
 		$this->set("solution_rating", "Hodnotenie", "Rating", "Bewertung");
 		$this->set("solution_back", "Späť", "Back", "Zurück");
 		$this->set("solution_next", "Ďalej", "Next", "Weiter");
-                $this->set("solution_addyoutube", "Pridať YouTube linku", "Add YouTube link", "YouTube-Link hinzufügen");
-		
+        $this->set("solution_addyoutube", "Pridať YouTube linku", "Add YouTube link", "YouTube-Link hinzufügen");
+        $this->set("solution_missing_info", "Pred odoslaním riešenia je potrebné mať na profile zadanú kategóriu, poštovú adresu a informácie o tíme."
+            , "Before submitting the solution, it is necessary to have the category, postal address, and team information entered on your profile."
+            , "Vor dem Einreichen der Lösung ist es erforderlich, die Kategorie, die Postanschrift und die Teaminformationen in Ihrem Profil anzugeben.");
 		$this->set("save_rating", "Uložiť hodnotenie", "Save rating", "Bewertung speichern");
 		$this->set("rating_was_saved", "Hodnotenie bolo uložené.", "Rating was saved.", "Bewertung wurde gespeichert");
 
@@ -134,7 +142,11 @@ class Translate {
 
 		$this->set("res_sk_liga_min", "Slovenská liga - druhá úloha", "Slovak League - Second Task", "Slowakische Liga - Zweites Auftrag");
 		$this->set("res_open_liga_min", "Open liga - druhá úloha", "Open league - Second Task", "Open Liga - Zweites Auftrag");
-		
+
+        // Profile
+        $this->set("prof_update", "Aktualizovať", "Update", "Aktualisieren");
+        $this->set("prof_cancel", "Zrušiť", "Cancel", "Stornieren");
+        $this->set("prof_edit", "Aktualizovať profil", "Edit Profile", "Profil bearbeiten");
 	}
 }
 
