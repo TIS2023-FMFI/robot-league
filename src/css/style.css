@@ -509,8 +509,14 @@ div.teamScoreTotalxs{
         border: 1px solid rgb(200, 200, 200);
     }
 
+
 }
 
+#task { 
+    color: inherit;
+    text-decoration: underline;
+    font-weight: bold;
+}
 
 
 
