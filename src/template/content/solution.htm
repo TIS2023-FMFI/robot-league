@@ -1,20 +1,10 @@
 @{include_php:solution_content}
 
-<!--<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen">
-<link rel="stylesheet" href="js/fancybox/jquery.fancybox.custom.css" type="text/css" media="screen">
-<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-
-
-$("#photo_gallery li a").fancybox({
-	afterShow: function () {
-		var url = $(this).attr("href");
-		$(".fancybox-image").wrap("<a href='" + url + "' target='_blank' />");
-	}
-});
-</script>-->
-
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js">
+	Fancybox.bind('[data-fancybox=\"gallery\"]', {
+        //
+      });
+</script>
 	<link
 	  rel="stylesheet"
 	  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
