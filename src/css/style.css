@@ -92,10 +92,7 @@ h3 {
 #photo_gallery {
 	padding: 0;
 	margin: 5px -10px;
-}
-
-#photo_gallery li {
-	text-align: center;
+    text-align: center;
 	margin: 10px;
 	list-style: none;
 	display: inline-block;
@@ -513,7 +510,7 @@ div.teamScoreTotalxs{
 }
 
 #task { 
-    color: inherit;
+    color: #fff;
     text-decoration: underline;
     font-weight: bold;
 }
