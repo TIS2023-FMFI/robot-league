@@ -75,11 +75,12 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 		$html.= "</a>";
 	}
 	$html.= "</div>";
-	$html.= "<script>
-	Fancybox.bind('[data-fancybox=\"gallery\"]', {
-	  //
-	});    
-  </script>";
+	$html.= "<script src=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js\"></script>
+    <script>
+      Fancybox.bind('[data-fancybox=\"gallery\"]', {
+        //
+      });    
+    </script>";
 	
 	$html.= "<h2>" . $this->get("solution_videos") . ":</h2>";
 	while($solution_video = mysqli_fetch_assoc($get_video)) {
