@@ -67,22 +67,14 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 	$html.= "<p>" . html_entity_decode ($row["text"]) . "</p>";
 
 	$html.= "<h2>" . $this->get("solution_photos") . ":</h2>";
-	//$html.= "<ul id='photo_gallery'>";
-	$html.= "<div>";
+	$html.= "<div id='photo_gallery'>";
 
 	while($solution_photo = mysqli_fetch_assoc($get_photos)) {
 		$html.= "<a data-fancybox=\"gallery\" href='components/get_image.php?id=" . $solution_photo["token"] . "&.jpg' rel='group_" . $row["id_solution"] . "'>";
 		$html.="<img src='components/get_image.php?id=" . $solution_photo["token"] . "&min=1'>";
 		$html.= "</a>";
 	}
-	//$html.= "</ul>";
 	$html.= "</div>";
-	$html.= "<script src='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js'></script>
-    <script>
-      Fancybox.bind('[data-fancybox=\"gallery\"]', {
-        //
-      });    
-    </script>";
 	
 	$html.= "<h2>" . $this->get("solution_videos") . ":</h2>";
 	while($solution_video = mysqli_fetch_assoc($get_video)) {
