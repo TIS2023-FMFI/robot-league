@@ -10,7 +10,7 @@ class Components extends Pages {
 		
 		$this->set("include_php", function($file) {
 			return include("components/".$file.".php");
-		});
+		}) ;
 
 
 		$this->set("current_url", function($query = NULL) {
@@ -43,8 +43,7 @@ class Components extends Pages {
 
 		$this->set("path", function() {
 			#$url = "//" . $_SERVER["HTTP_X_FORWARDED_SERVER"] . "/rl";
-			#$url = "//" . $_SERVER["HTTP_X_FORWARDED_SERVER"];
-			$url = "";
+			$url = $_SERVER["HTTP_X_FORWARDED_SERVER"];
 			$url.= str_replace("index.php", "", $_SERVER["PHP_SELF"]);
 			return $url;
 		});

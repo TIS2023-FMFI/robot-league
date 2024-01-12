@@ -1,20 +1,5 @@
 <?php
-
 require("phpmailer/class.phpmailer.php");
-
-/*
-function var_dump_ret($mixed = null) {
-  ob_start();
-  var_dump($mixed);
-  $content = ob_get_contents();
-  ob_end_clean();
-  return $content;
-}
-*/
-
-//  error_log("RRR (" . Security::post("mail") . ", " . Security::post("login") . ", " . Security::post("reset") . ", " . Security::post("rstpsswd") . ")");
-//  error_log("ppp: " . var_dump_ret($_POST));
-//  error_log("sss: " . var_dump_ret($_SESSION));
 
 require("components/util.php");
 
@@ -50,7 +35,7 @@ if ((Security::post("reset") == Security::post("rstpsswd")) && (Security::post("
       $mail->msgHTML($content);
 
       if (!$mail->send()) {
-          //$this->set("send_email", "E-mail nebol odoslaný");
+          $this->set("send_email", "E-mail nebol odoslaný");
           $reset_msg_result .= "User has NOT been notified by e-mail (could not send).";
           error_log("reset: '" . $email_address_to_reset . "' could not be notified.");
       } else {

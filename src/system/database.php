@@ -406,19 +406,20 @@ class Database {
 		$result = mysqli_query($this->conn, $sql);
 		return mysqli_num_rows($result);
 	}
-	
-	
-	public function registration_user($mail, $password, $team, $about, $league) {
-		$sql = "INSERT INTO users ";
-		$sql.= "(mail, password, admin, jury) VALUES ";
-		$sql.= "('" . $mail . "', '" . md5($password) . "', '0', '0')";
-		mysqli_query($this->conn, $sql);
+
+
+	public function registration_user($mail, $password, $team, $about, $league, $city, $street_name, $zip_code, $category) {
+		$sql = "INSERT INTO users (mail, password, admin, jury) VALUES (?, ?, '0', '0')";
+		$stmt = mysqli_prepare($this->conn, $sql);
+		$hashed_password = md5($password);
+		mysqli_stmt_bind_param($stmt, "ss", $mail, $hashed_password);
+		mysqli_stmt_execute($stmt);
 		$id_user = mysqli_insert_id($this->conn);
-		
-		$sql = "INSERT INTO teams ";
-		$sql.= "(id_user, name, description, sk_league) VALUES ";
-		$sql.= "('" . $id_user . "', '" . $team . "', '" . $about . "', '" . $league . "')";
-		mysqli_query($this->conn, $sql);
+
+		$sql = "INSERT INTO teams (id_user, name, description, sk_league, city, street_name, zip, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		$stmt = mysqli_prepare($this->conn, $sql);
+		mysqli_stmt_bind_param($stmt, "isssssss", $id_user, $team, $about, $league, $city, $street_name, $zip_code, $category);
+		mysqli_stmt_execute($stmt);
 	}
 
 
@@ -658,6 +659,85 @@ class Database {
         $sql.= "WHERE G.year = '" . $year . "' AND C.id_user = 1";
         return mysqli_query($this->conn, $sql);
     }
+
+	public function getUserAndTeamInfo($userId) {
+		$sql = "SELECT 
+                    u.mail, 
+                    t.name, 
+                    t.description, 
+                    t.city, 
+                    t.street_name, 
+                    t.zip, 
+                    t.category 
+                FROM 
+                    users as u 
+                JOIN 
+                    teams as t 
+                ON 
+                    u.id = t.id_user 
+                WHERE 
+                    u.id = ?";
+
+		if ($stmt = $this->conn->prepare($sql)) {
+			$stmt->bind_param("i", $userId);
+			$stmt->execute();
+			$stmt->bind_result($mail, $name, $description, $city, $streetName, $zip, $category);
+
+			if ($stmt->fetch()) {
+				$userInfo = [
+					'mail' => $mail,
+					'name' => $name,
+					'description' => $description,
+					'city' => $city,
+					'street_name' => $streetName,
+					'zip' => $zip,
+					'category' => $category
+				];
+			} else {
+				$userInfo = null;
+			}
+
+			$stmt->close();
+
+			return $userInfo;
+		} else {
+			die("Statement could not be prepared: " . $this->conn->error);
+		}
+	}
+
+	public function update_user($mail, $team, $about, $city, $street_name, $zip_code, $category, $userid) {
+		// Update the user table
+		$sql = "UPDATE users SET mail = ? WHERE id = ?";
+		$stmt = mysqli_prepare($this->conn, $sql);
+		mysqli_stmt_bind_param($stmt, "si", $mail, $userid);
+		mysqli_stmt_execute($stmt);
+
+		// Update the teams table
+		$sql = "UPDATE teams SET name = ?, description = ?, city = ?, street_name = ?, zip = ?, category = ? WHERE id_user = ?";
+		$stmt = mysqli_prepare($this->conn, $sql);
+		mysqli_stmt_bind_param($stmt, "ssssssi", $team, $about, $city, $street_name, $zip_code, $category, $userid);
+		mysqli_stmt_execute($stmt);
+	}
+
+    public function check_for_this_years_solution($userID, $currentYear){
+        $sql = "SELECT a.id 
+                FROM users u
+                LEFT JOIN solutions s ON u.id = s.id_user
+                LEFT JOIN assignments a ON s.id_assignment = a.id
+                LEFT JOIN assignments_group ag ON a.id_group = ag.id AND ag.year = ?
+                WHERE u.id = ? AND ag.id IS NOT NULL
+                LIMIT 1";
+
+        $stmt = mysqli_prepare($this->conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ii", $currentYear, $userID);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+
+        return mysqli_num_rows($result) > 0;
+
+    }
+
 
 	function __destruct() {
 		mysqli_close($this->conn);

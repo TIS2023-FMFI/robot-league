@@ -27,7 +27,8 @@ class Pages extends Translate {
 				"archive"							=> "content/archive.htm",
 				"jury"								=> "content/jury.htm",
 				"teams"								=> "content/teams.htm",
-				"error-404"						=> "error/error-404.htm");
+				"error-404"						=> "error/error-404.htm",
+				"profile"						=>	"content/profile.htm");
 		});
 		
 		

@@ -2,6 +2,7 @@
 @{include_php:new_solution}
 @{save_ok}
 <form method="post" id="assignment_form" enctype="multipart/form-data">
+	<div id="MissingInfo" style="color:red; font-size: large; font-weight: bold"> </div>
 	<h2>@{solution_assignment}: @{assignment_title}</h2>
 	<p class="fix_height_solution">
 		<textarea name="solution" id="solution">@{solution_text}</textarea>
@@ -24,10 +25,11 @@
 @{get_images_solution}
 	</ul>
 	<input type="file" class="multiupload" name="upload_images[]" multiple="multiple">
+	<div id="MissingInfo2" style="color:red; font-size: large; font-weight: bold"> </div>
 	<p>
 		<input type="hidden" name="save_solution" value="ok">
 		<input type="hidden" name="id_assignment" value="@{new_assignment_id}">
-		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-file"></span> @{solution_save}</button>
+		<button type="submit" class="btn btn-success" id="saveButton"><span class="glyphicon glyphicon-file"></span> @{solution_save}</button>
 		<a href="./?page=assignment&id=@{assignment_group_id}" class="btn btn-warning">@{solution_overview}</a>
 	</p>
 </form>
@@ -56,4 +58,18 @@ $("#photo_gallery li a").fancybox({
 		$(".fancybox-image").wrap("<a href='" + url + "' target='_blank' />");
 	}
 });
+
+</script>
+
+<script>
+	window.onload = function() {
+		if("@{UpdateProfile}") {
+			var updateNoticeDiv = document.getElementById('MissingInfo');
+			var updateNoticeDiv2 = document.getElementById('MissingInfo2');
+			var saveButton = document.getElementById('saveButton');
+			updateNoticeDiv.innerText = "@{solution_missing_info}";
+			updateNoticeDiv2.innerText = "@{solution_missing_info}";
+			saveButton.style.display = 'none';
+		}
+	};
 </script>
