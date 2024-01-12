@@ -63,7 +63,7 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 	$show_coment	= $this->database->show_coment($id_group);
 
 
-	$html.= "<h2><a href=?page=assignment&id=" . $id_group . ">" . $this->get("solution_assignment") . ": " . $row[$lang . "_title"] . "</a></h2>";
+	$html.= "<h2><a id='task' href=?page=assignment&id=" . $id_group . ">" . $this->get("solution_assignment") . ": " . $row[$lang . "_title"] . "</a></h2>";
 	$html.= "<p>" . html_entity_decode ($row["text"]) . "</p>";
 
 	$html.= "<h2>" . $this->get("solution_photos") . ":</h2>";
