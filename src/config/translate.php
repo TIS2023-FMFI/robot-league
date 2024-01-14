@@ -115,7 +115,9 @@ class Translate {
 		$this->set("assignment_overview_published", "Zverejnené zadania", "Published assignments", "Veröffentlichte Aufgabe");
 		$this->set("assignment_overview_edit", "Upraviť", "Edit", "Redigieren");
 		$this->set("assignment_overview_delete", "Zmazať", "Delete", "Löschen");
-		
+
+        // Assignment preview
+		$this->set("assignment_preview", "Náhľad zadania", "Assignment preview", "Aufgabenvorschau");
 		
 		// New solutions
 		$this->set("solution_assignment", "Zadanie", "Assignment", "Aufgabe");

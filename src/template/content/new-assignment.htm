@@ -43,6 +43,7 @@
 		<input type="hidden" name="save_assignment" value="ok">
 		<input type="hidden" name="id_assignment" value="@{new_assignment_id}">
 		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-file"></span> @{new_assignment_save}</button>
+		<button type="button" id="preview_button" class="btn btn-info">@{assignment_preview}</button>
 		<a href="./?page=assignments-overview" class="btn btn-warning">@{new_assignment_overview}</a>
 	</p>
 </form>
@@ -63,5 +64,10 @@ tinymce.init({
 	toolbar1: "undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
 	toolbar2: "print preview media | forecolor backcolor emoticons | codesample",
 	extended_valid_elements: "+iframe[src|width|height|name|align|class]"
+});
+document.getElementById('preview_button').addEventListener('click', function () {
+    var formData = new FormData(document.getElementById('assignment_form'));
+    var params = new URLSearchParams(formData);
+    window.open('./?page=assignment-preview&' + params.toString(), '_blank');
 });
 </script>
