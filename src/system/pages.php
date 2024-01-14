@@ -19,6 +19,7 @@ class Pages extends Translate {
 				"home"								=> "content/home.htm",
 				"assignment"						=> "content/assignment.htm",
 				"assignments-overview"		=> "content/assignments-overview.htm",
+				"assignment-preview"		=> "content/assignment-preview.htm",
 				"new-assignment"				=> "content/new-assignment.htm",
 				"new-registration"				=> "content/new-registration.htm",
 				"new-solution"					=> "content/new-solution.htm",
