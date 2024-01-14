@@ -51,6 +51,7 @@ $get_solution = $this->database->solution_content($id_group, $id_team);
 $user = mysqli_fetch_assoc($get_solution);
 
 $html = "<h3>" . $this->get("solution_team_name") . ": " . $user["team"] . "</h3>";
+$html.= "<h3>" . $this->get("solution_team_info") . ": " . $user["team_info"] . "</h3>";
 $html.= (($user["sk_league"] == 1)? "": "Open league");
 $html.= "<form method='post'><input type='hidden' name='create_comment' value='ok'>";
 

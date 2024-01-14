@@ -126,6 +126,7 @@ class Translate {
 		$this->set("solution_save", "Odovzdať riešenie", "Save solution", "Lösung speichern");
 		$this->set("solution_overview", "Prehľad zadaní", "Assignments overview", "Aufgaben Überblick");
 		$this->set("solution_team_name", "Názov tímu", "Team name", "Teamname");
+        $this->set("solution_team_info", "O tíme", "About the team", "Über das Team");
 		$this->set("solution_rating", "Hodnotenie", "Rating", "Bewertung");
 		$this->set("solution_back", "Späť", "Back", "Zurück");
 		$this->set("solution_next", "Ďalej", "Next", "Weiter");
