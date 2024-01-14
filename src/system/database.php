@@ -144,6 +144,7 @@ class Database {
 	public function solution_content($id_group, $id_user) {
 		$sql = "SELECT T.name AS team, A.sk_title, IF(A.en_title!='', A.en_title, A.sk_title) AS en_title, ";
                 $sql.= "IF(A.de_title!='', A.de_title, A.sk_title) AS de_title, T.sk_league, ";
+		$sql.= "T.description as team_info ";
 		$sql.= "S.text, S.id AS id_solution ";
 		$sql.= "FROM assignments as A ";
 		$sql.= "LEFT JOIN solutions as S ";
