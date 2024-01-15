@@ -150,6 +150,11 @@ class Translate {
         $this->set("prof_update", "Aktualizovať", "Update", "Aktualisieren");
         $this->set("prof_cancel", "Zrušiť", "Cancel", "Stornieren");
         $this->set("prof_edit", "Aktualizovať profil", "Edit Profile", "Profil bearbeiten");
+
+        // Util
+        $this->set("Zajace", "Zajace", "Rabbits", "Hasen");
+        $this->set("Tigre", "Tigre", "Tigers", "Tiger");
+        $this->set("category_info", "Váš tím je v kategórii ", "Your team is in the category ", "Ihr Team ist in der Kategorie ");
 	}
 }
 
