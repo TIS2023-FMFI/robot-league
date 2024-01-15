@@ -155,6 +155,7 @@ class Translate {
         $this->set("Zajace", "Zajace", "Rabbits", "Hasen");
         $this->set("Tigre", "Tigre", "Tigers", "Tiger");
         $this->set("category_info", "Váš tím je v kategórii ", "Your team is in the category ", "Ihr Team ist in der Kategorie ");
+        $this->set("unsaved_changes", "Máte neuložené zmeny.", "You have unsaved changes.", "Sie haben nicht gespeicherte Änderungen.");
 	}
 }
 
