@@ -3,6 +3,7 @@
 @{save_ok}
 <form method="post" id="assignment_form" enctype="multipart/form-data">
 	<div id="MissingInfo" style="color:red; font-size: large; font-weight: bold"> </div>
+	@{cat_info}
 	<h2>@{solution_assignment}: @{assignment_title}</h2>
 	<p class="fix_height_solution">
 		<textarea name="solution" id="solution">@{solution_text}</textarea>
@@ -26,7 +27,6 @@
 	</ul>
 	<input type="file" class="multiupload" name="upload_images[]" multiple="multiple">
 	<div id="MissingInfo2" style="color:red; font-size: large; font-weight: bold"> </div>
-	@{cat_info}
 	<p>
 		<input type="hidden" name="save_solution" value="ok">
 		<input type="hidden" name="id_assignment" value="@{new_assignment_id}">
