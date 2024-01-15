@@ -32,6 +32,7 @@
 		<input type="hidden" name="save_solution" value="ok">
 		<input type="hidden" name="id_assignment" value="@{new_assignment_id}">
 		<button type="submit" class="btn btn-success" id="saveButton"><span class="glyphicon glyphicon-file"></span> @{solution_save}</button>
+		<button type="button" id="preview_button" class="btn btn-info">@{solution_preview}</button>
 		<a href="./?page=assignment&id=@{assignment_group_id}" class="btn btn-warning">@{solution_overview}</a>
 	</p>
 </form>
@@ -86,4 +87,15 @@ $("#photo_gallery li a").fancybox({
 			saveButton.style.display = 'none';
 		}
 	};
+</script>
+
+<script>
+	document.getElementById('preview_button').addEventListener('click', function () {
+    var formData = new FormData(document.getElementById('assignment_form'));
+    var params = new URLSearchParams(formData);
+	var url = window.location.href;
+	var urlParams = new URLSearchParams(window.location.search);
+	var assignment_id = urlParams.get('id-assignment');
+    window.open('./?page=solution-preview&id-assignment=' + assignment_id + '&' + params.toString(), '_blank');
+});
 </script>

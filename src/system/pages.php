@@ -23,6 +23,7 @@ class Pages extends Translate {
 				"new-assignment"				=> "content/new-assignment.htm",
 				"new-registration"				=> "content/new-registration.htm",
 				"new-solution"					=> "content/new-solution.htm",
+				"solution-preview"		=> "content/solution-preview.htm",
 				"results"							=> "content/results.htm",
 				"solution"							=> "content/solution.htm",
 				"archive"							=> "content/archive.htm",

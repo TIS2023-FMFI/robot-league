@@ -139,6 +139,9 @@ class Translate {
 		$this->set("save_rating", "Uložiť hodnotenie", "Save rating", "Bewertung speichern");
 		$this->set("rating_was_saved", "Hodnotenie bolo uložené.", "Rating was saved.", "Bewertung wurde gespeichert");
 
+        // Solution preview
+        $this->set("solution_preview", "Náhľad riešenia", "Solution preview", "Lösungsvorschau");
+
 		// Results
 		$this->set("res_sk_liga_max", "Slovenská liga", "Slovak league", "Slowakische Liga");
 		$this->set("res_open_liga_max", "Open liga", "Open league", "Open Liga");
