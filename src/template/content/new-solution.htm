@@ -3,6 +3,7 @@
 @{save_ok}
 <form method="post" id="assignment_form" enctype="multipart/form-data">
 	<div id="MissingInfo" style="color:red; font-size: large; font-weight: bold"> </div>
+	@{cat_info}
 	<h2>@{solution_assignment}: @{assignment_title}</h2>
 	<p class="fix_height_solution">
 		<textarea name="solution" id="solution">@{solution_text}</textarea>
@@ -26,6 +27,7 @@
 	</ul>
 	<input type="file" class="multiupload" name="upload_images[]" multiple="multiple">
 	<div id="MissingInfo2" style="color:red; font-size: large; font-weight: bold"> </div>
+	<p id="unsaved_changes" class="alert alert-warning" style="display: none">@{unsaved_changes}</p>
 	<p>
 		<input type="hidden" name="save_solution" value="ok">
 		<input type="hidden" name="id_assignment" value="@{new_assignment_id}">
@@ -37,6 +39,18 @@
 <script>
 tinymce.init({
 	selector: 'textarea',
+	setup: function(editor) {
+			editor.on('Change', function () {
+				var hasUndo = editor.undoManager.data.length > 0;
+				if (hasUndo) {
+					$("#unsaved_changes").show();
+				}
+				else {
+					$("#unsaved_changes").hide();
+				}
+			console.log("yo");
+		})
+	},
 	height: 400,
 	menubar: false,
 	plugins: [

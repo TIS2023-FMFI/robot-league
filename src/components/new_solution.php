@@ -9,6 +9,7 @@ $id_assignment = Security::get("id-assignment");
 $userId = $_SESSION['user']['id'];
 $userInfo = $this->database->getUserAndTeamInfo($userId);
 $assignment = $this->database->assignment($id_assignment);
+$this->set("cat_info", "<p class='alert alert-info'>" . $this->get("category_info") . $this->get($userInfo["category"]) . ".</p>");
 
 if(is_null($userInfo['city']) or is_null($userInfo['street_name']) or is_null($userInfo['zip']) or
 	is_null($userInfo['category']) or is_null($userInfo['description'])){
