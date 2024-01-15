@@ -94,7 +94,7 @@ h3 {
 	margin: 5px -10px;
 }
 
-#photo_gallery a {
+#photo_gallery a, #photo_gallery li {
 	text-align: center;
 	margin: 10px;
 	list-style: none;

@@ -26,6 +26,8 @@ if (strtotime($assignment_group["begin"]) < time())
   		$this->get("user", "jury") == 0 &&
   		$this->get("user", "admin") == 0
   	) {
+		$team = $this->database->getUserAndTeamInfo($_SESSION["user"]["id"]);
+		$html.= "<p class='alert alert-info'>" . $this->get("category_info") . $this->get($team["category"]) . ".</p>";
   		$html.= "<a href='?page=new-solution&id-assignment=" . $row["id"] . "'>" . $this->get("assignment_solutions_update") . " " . $num . "</a>";
   	}
   	$num++;
