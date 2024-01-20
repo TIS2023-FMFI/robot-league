@@ -81,6 +81,24 @@ if ($this->get("user", "admin") == 1) {
 	}
 }
 
+
+if ($this->get("user", "admin") == 1) {
+	$html.= "<h2>" . $this->get("assignment_overview_past_the_deadline") . "</h2>";
+	$after_deadline_group = $this->database->after_deadline_group();
+	while($row_group = mysqli_fetch_assoc($after_deadline_group)) {
+		$html.= "<div><strong>" . $this->get("assignment_overview_date_dedline") . ": " . $row_group["begin"] . " do: " . $row_group["end"] . "</strong>";
+		$published_assignment = $this->database->published_assignment($row_group["id"]);
+		$html.= "<ul class='assignments-overview list published'>";
+		while($row_assignment = mysqli_fetch_assoc($published_assignment)) {
+			$html.= "<li>" . $row_assignment["sk_title"];
+			$html.= "<a href='./?page=new-assignment&id=" . $row_assignment["id"] . "' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-wrench'></span> " . $this->get("assignment_overview_edit") . "</a>";
+			$html.= "</li>";
+		}
+		$html.= "</ul></div>";
+	}
+}
+
+
 return $html;
 
 ?>
