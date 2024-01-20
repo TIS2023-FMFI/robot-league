@@ -70,6 +70,11 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 			if ($this->get("user", "admin") == 1) {
 				$html.= " <a href='?page=assignment&id=" . $id . "&best=" . $row["id_team"] . "' class='best_alert'>Best</a>";
 			}
+			if ($row["id_team"]==$this->get("user", "id")){
+				$html.= "<a href='?page=new-solution&id-assignment=" . $row["id_assignment"] . "&id-team=" . $row["id_team"] . "' style='float: right;' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-file'></span> " . $this->get("assignment_solutions_update") . " " . "</a>";
+			}else{
+				$html.= "<a href='?page=new-solution&id-assignment=" . $row["id_assignment"] . "&id-team=" . $row["id_team"] . "' style='float: right;' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-wrench'></span> " . $this->get("admin_solution_update") . " " . "</a>";
+			}
 			$html.= "</li>";
 		}
 	}
