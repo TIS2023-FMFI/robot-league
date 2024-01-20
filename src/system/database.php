@@ -254,6 +254,13 @@ class Database {
 		return mysqli_query($this->conn, $sql);
 	}
 	
+	public function after_deadline_group() {
+		$sql = "SELECT * ";
+		$sql.= "FROM assignments_group ";
+		$sql.= "WHERE end <= NOW() ";
+		$sql.= "GROUP BY id";
+		return mysqli_query($this->conn, $sql);
+	}
 	
 	public function published_assignment($id_group) {
 		$sql = "SELECT * ";
