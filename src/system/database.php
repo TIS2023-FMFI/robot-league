@@ -118,7 +118,7 @@ class Database {
 	
 	
 	public function assignment_solutions($id_group) {
-		$sql = "SELECT S.id, IF(S.best = 1, 'best', '') AS best, T.name AS team, T.id_user AS id_team ";
+		$sql = "SELECT S.id, IF(S.best = 1, 'best', '') AS best, T.name AS team, T.id_user AS id_team, S.id_assignment AS id_assignment ";
 		$sql.= "FROM assignments AS A ";
 		$sql.= "LEFT JOIN solutions AS S ";
 		$sql.= "ON A.id = S.id_assignment ";

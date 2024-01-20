@@ -7,6 +7,11 @@ $id_assignment = Security::get("id-assignment");
 
 //check for filled in profile
 $userId = $_SESSION['user']['id'];
+
+if (isset($_GET["id-team"])){
+	$userId = $_GET["id-team"];
+}
+
 $userInfo = $this->database->getUserAndTeamInfo($userId);
 $assignment = $this->database->assignment($id_assignment);
 $this->set("cat_info", "<p class='alert alert-info'>" . $this->get("category_info") . $this->get($userInfo["category"]) . ".</p>");
@@ -18,7 +23,7 @@ if(is_null($userInfo['city']) or is_null($userInfo['street_name']) or is_null($u
 
 //editable
 $expired_assignment = $this->database->expired_assignment($assignment["id_group"]);
-if ($expired_assignment == 0) {
+if ($expired_assignment == 0 && $this->get("user", "admin") != "1") {
 	echo "permission denied";
 	exit;
 }
@@ -31,7 +36,7 @@ function is_image($img){
 $this->set("assignment_title", $assignment["sk_title"]);
 $this->set("assignment_group_id", $assignment["id_group"]);
 
-$solution = $this->database->exist_solution($id_assignment, $this->get("user", "id"));
+$solution = $this->database->exist_solution($id_assignment, $userId);
 $this->set("solution_text", $solution["text"]);
 
 
@@ -41,13 +46,13 @@ if (Security::post("save_solution")) {
 	if ($solution["id"]) {
 		$this->database->update_solution(
 			$id_assignment,
-			$this->get("user", "id"),
+			$userId,
 			Security::post("solution")
 		);
 	} else {
 		$id_solution = $this->database->create_solution(
 			$id_assignment,
-			$this->get("user", "id"),
+			$userId,
 			Security::post("solution")
 		);
 	}

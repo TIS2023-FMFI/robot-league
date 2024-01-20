@@ -139,6 +139,7 @@ class Translate {
             , "Vor dem Einreichen der Lösung ist es erforderlich, die Kategorie, die Postanschrift und die Teaminformationen in Ihrem Profil anzugeben.");
 		$this->set("save_rating", "Uložiť hodnotenie", "Save rating", "Bewertung speichern");
 		$this->set("rating_was_saved", "Hodnotenie bolo uložené.", "Rating was saved.", "Bewertung wurde gespeichert");
+        $this->set("admin_solution_update", "Upraviť riešenie", "Edit solution", "Bearbeiten Sie die Lösung");
 
         // Solution preview
         $this->set("solution_preview", "Náhľad riešenia", "Solution preview", "Lösungsvorschau");
