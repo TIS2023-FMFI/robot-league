@@ -676,7 +676,8 @@ class Database {
                     t.city, 
                     t.street_name, 
                     t.zip, 
-                    t.category 
+                    t.category,
+					t.sk_league 
                 FROM 
                     users as u 
                 JOIN 
@@ -689,7 +690,7 @@ class Database {
 		if ($stmt = $this->conn->prepare($sql)) {
 			$stmt->bind_param("i", $userId);
 			$stmt->execute();
-			$stmt->bind_result($mail, $name, $description, $city, $streetName, $zip, $category);
+			$stmt->bind_result($mail, $name, $description, $city, $streetName, $zip, $category, $sk_league);
 
 			if ($stmt->fetch()) {
 				$userInfo = [
@@ -699,7 +700,8 @@ class Database {
 					'city' => $city,
 					'street_name' => $streetName,
 					'zip' => $zip,
-					'category' => $category
+					'category' => $category,
+					'sk_league' => $sk_league
 				];
 			} else {
 				$userInfo = null;
