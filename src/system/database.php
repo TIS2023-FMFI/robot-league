@@ -460,7 +460,7 @@ class Database {
 	public function expired_assignment($id_assignment) {
 		$sql = "SELECT * ";
 		$sql.= "FROM assignments_group AS AG ";
-		$sql.= "WHERE AG.id = '" . $id_assignment . "' AND AG.end > NOW()";
+		$sql.= "WHERE AG.id = '" . $id_assignment . "' AND AG.end < NOW()";
 		$result = mysqli_query($this->conn, $sql);
 		return mysqli_num_rows($result);
 	}
