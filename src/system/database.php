@@ -483,9 +483,9 @@ class Database {
 	}
 	
 	
-	public function update_comment($solution, $id_user, $text, $points, $category) {
+	public function update_comment($solution, $id_user, $text, $points) {
 		$sql = "UPDATE comments ";
-		$sql.= "SET text = '" . $text . "', points = '" . $points . "', category= " . $category . " ";
+		$sql.= "SET text = '" . $text . "', points = '" . $points . "' ";
 		$sql.= "WHERE id_solution = '" . $solution . "' AND id_user = '" . $id_user . "'";
 		mysqli_query($this->conn, $sql);
 	}
