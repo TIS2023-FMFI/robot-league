@@ -1,7 +1,7 @@
 <?php
 $lang = ["sk", "en", "de"][$_SESSION["lang"]];
-$user = $_SESSION["user"];
-$id_team = $user["id"];
+$id_team = Security::get("id-team");
+$userInfo = $this->database->getUserAndTeamInfo($id_team);
 
 $id_assignment = Security::get("id-assignment");
 $assignment = $this->database->assignment($id_assignment);
@@ -17,9 +17,9 @@ $get_program    = $this->database->get_solution_program($solution["id_solution"]
 
 
 
-$html = "<h3>" . $this->get("solution_team_name") . ": " . $user["name"] . "</h3>";
-$html.= "<h3>" . $this->get("solution_team_info") . ": " . $user["description"] . "</h3>";
-$html.= (($user["sk_league"] == 1)? "": "Open league");
+$html = "<h3>" . $this->get("solution_team_name") . ": " . $userInfo["name"] . "</h3>";
+$html.= "<h3>" . $this->get("solution_team_info") . ": " . $userInfo["description"] . "</h3>";
+$html.= (($userInfo["sk_league"] == 1)? "": "Open league");
 
 
 $html.= "<h2><a id='task' href=?page=assignment&id=" . $id_group . ">" . $this->get("solution_assignment") . ": " . $assignment[$lang . "_title"] . "</a></h2>";

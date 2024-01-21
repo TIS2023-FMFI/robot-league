@@ -96,6 +96,7 @@ $("#photo_gallery li a").fancybox({
 	var url = window.location.href;
 	var urlParams = new URLSearchParams(window.location.search);
 	var assignment_id = urlParams.get('id-assignment');
-    window.open('./?page=solution-preview&id-assignment=' + assignment_id + '&' + params.toString(), '_blank');
+	var id_team = urlParams.get('id-team');
+    window.open('./?page=solution-preview&id-assignment=' + assignment_id + '&id-team=' + id_team + '&' + params.toString(), '_blank');
 });
 </script>
