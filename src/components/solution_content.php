@@ -5,6 +5,12 @@ $id_team = Security::get("id-team");
 $lang = ["sk", "en", "de"][$_SESSION["lang"]];
 
 $expired_assignment = $this->database->expired_assignment($id_group);
+$team_info = $this->database->getUserAndTeamInfo($id_team);
+$category = "";
+
+if (isset($team_info["category"])){
+	$category = $team_info["category"];
+}
 
 if ($expired_assignment == 1 && $this->get("user", "admin") != 1) {
 	echo "permission denied";
@@ -15,29 +21,25 @@ if ($expired_assignment == 1 && $this->get("user", "admin") != 1) {
 if (Security::post("create_comment") == "ok") {
 	foreach ($_POST["comment"] AS $key => $value) {
 		$rating = $_POST["rating"][$key];
-		$category = $_POST["category"];
 		if ($rating > 3) $rating = 3;
 		if ($rating < 0) $rating = 0;
 
 		$get_jury_comment = $this->database->get_comment($key, $this->get("user", "id"));
 		
-		echo $rating;
 		
 		if (mysqli_num_rows($get_jury_comment) == 0) {
 			$this->database->set_comment(
 				$key,
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
-				$rating,
-				$category
+				$rating
 			);
 		} else {
 			$this->database->update_comment(
 				$key,
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
-				$rating,
-				$category
+				$rating
 			);
 		}
 	}
@@ -158,10 +160,6 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 		if (mysqli_num_rows($get_admin_comment) > 0) {
 			$admin_commented = true;
 		}
-		
-		$html.= "</li>";
-		$html.= "<li>Kategória: <select name='category'><option value='1'>Zajace</option><option value='2'>Tigre</option></select></li>";
-		$html.= "</ul>";
 	}
 }
 
