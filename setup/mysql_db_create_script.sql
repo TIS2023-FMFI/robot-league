@@ -80,6 +80,7 @@ CREATE TABLE `comments` (
   `id_user` int(12) NOT NULL,
   `text` text COLLATE utf8_slovak_ci NOT NULL,
   `points` float NOT NULL,
+  `comment` text COLLATE utf8_slovak_ci,
   PRIMARY KEY (`id`),
   KEY `id_solution` (`id_solution`),
   KEY `id_user` (`id_user`)
@@ -185,6 +186,10 @@ CREATE TABLE `teams` (
   `name` varchar(255) COLLATE utf8_slovak_ci NOT NULL,
   `description` text COLLATE utf8_slovak_ci,
   `sk_league` tinyint(1) NOT NULL DEFAULT '1',
+  `city` varchar(255) COLLATE utf8_slovak_ci,
+  `street_name` varchar(255) COLLATE utf8_slovak_ci,
+  `zip` varchar(15) COLLATE utf8_slovak_ci,
+  `category` varchar(255) COLLATE utf8_slovak_ci,
   UNIQUE KEY `id_user_2` (`id_user`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `remove team` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE
