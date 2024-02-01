@@ -23,7 +23,7 @@ if(is_null($userInfo['city']) or is_null($userInfo['street_name']) or is_null($u
 
 //editable
 $expired_assignment = $this->database->expired_assignment($assignment["id_group"]);
-if ($expired_assignment == 0 && $this->get("user", "admin") != "1") {
+if ($expired_assignment == 1 && $this->get("user", "admin") != "1") {
 	echo "permission denied";
 	exit;
 }
