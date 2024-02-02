@@ -71,17 +71,17 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 				$html.= " <a href='?page=assignment&id=" . $id . "&best=" . $row["id_team"] . "' class='best_alert'>Best</a>";
 			}
 			if ($row["id_team"]==$this->get("user", "id")){
-				$adminButton = "";
+				$adminButton = ">";
 				if ($this->get("user", "admin") == 1){
-					$adminButton .= "' style='float: right;' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-file'></span> " . $this->get("assignment_solutions_update");
+					$adminButton = " style='float: right;' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-file'></span> " . $this->get("assignment_solutions_update");
 				}
-				$html.= "<a href='?page=new-solution&id-assignment=" . $row["id_assignment"] . "&id-team=" . $row["id_team"] . $adminButton . " " . "</a>";
+				$html.= "<a href='?page=new-solution&id-assignment=" . $row["id_assignment"] . "&id-team=" . $row["id_team"] . "' ". $adminButton . "</a>";
 			}else{
-				$adminButton = "";
+				$adminButton = ">";
 				if ($this->get("user", "admin") == 1){
-					$adminButton .= "' style='float: right;' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-wrench'></span> " . $this->get("admin_solution_update");
+					$adminButton = " style='float: right;' class='btn btn-warning btn-xs'><span class='glyphicon glyphicon-wrench'></span> " . $this->get("admin_solution_update");
 				}
-				$html.= "<a href='?page=new-solution&id-assignment=" . $row["id_assignment"] . "&id-team=" . $row["id_team"] . $adminButton . " " . "</a>";
+				$html.= "<a href='?page=new-solution&id-assignment=" . $row["id_assignment"] . "&id-team=" . $row["id_team"] . "' " . $adminButton . "</a>";
 			}
 			$html.= "</li>";
 		}
