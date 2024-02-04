@@ -501,10 +501,10 @@ class Database {
 	}
 	
 	
-	public function set_comment($solution, $id_user, $text, $points, $category, $internal_comment=NULL) {
+public function set_comment($solution, $id_user, $text, $points, $internal_comment=NULL) {
 		$sql = "INSERT INTO comments ";
 		$sql.= "(id_solution, id_user, text, points, category, internal_comment) VALUES ";
-		$sql.= "('" . $solution . "', '" . $id_user . "', '" . $text . "', '" . $points . "', '" . $category . "', '" . $internal_comment . "')";
+		$sql.= "('" . $solution . "', '" . $id_user . "', '" . $text . "', '" . $points . "', '" . $internal_comment . "')";
 		mysqli_query($this->conn, $sql);
 	}
 	
@@ -533,13 +533,12 @@ class Database {
 		$sql.= "SET best_assignment_number = 0, best = 0 ";
 		$sql.= "WHERE id_user = '" . $id_team . "'";
 		mysqli_query($this->conn, $sql);
-	}
+	}	
 	
 	
-	
-	public function update_comment($solution, $id_user, $text, $points) {
+	public function update_comment($solution, $id_user, $text, $points, $internal_comment=NULL) {
 		$sql = "UPDATE comments ";
-		$sql.= "SET text = '" . $text . "', points = '" . $points . "' ";
+		$sql.= "SET text = '" . $text . "', points = '" . $points . "', internal_comment = '" . $internal_comment . "' ";
 		$sql.= "WHERE id_solution = '" . $solution . "' AND id_user = '" . $id_user . "'";
 		mysqli_query($this->conn, $sql);
 	}
