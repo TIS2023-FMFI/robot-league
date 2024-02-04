@@ -79,8 +79,484 @@ h3 {
 
 }
 
-#content ul#solutions li.best {
+#content ul#solutions li.best1_1 {
+	position: relative;
 	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best1_1:before {
+    content: "1";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best1_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best2_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best2_1:before {
+    content: "2";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best2_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best3_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best3_1:before {
+    content: "3";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best3_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best4_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best4_1:before {
+    content: "4";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best4_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best5_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best5_1:before {
+    content: "5";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best5_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best6_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best6_1:before {
+    content: "6";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best6_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best7_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best7_1:before {
+    content: "7";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best7_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best8_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best8_1:before {
+    content: "8";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best8_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best9_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best9_1:before {
+    content: "9";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best9_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best10_1 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best10_1:before {
+    content: "10";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best10_1:after {
+	position: absolute;
+    content: url(../image/rabbit.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best1_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best1_2:before {
+    content: "1";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best1_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best2_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best2_2:before {
+    content: "2";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best2_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best3_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best3_2:before {
+    content: "3";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best3_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best4_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best4_2:before {
+    content: "4";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best4_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best5_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best5_2:before {
+    content: "5";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best5_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best6_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best6_2:before {
+    content: "6";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best6_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best7_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best7_2:before {
+    content: "7";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best7_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best8_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best8_2:before {
+    content: "8";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best8_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best9_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best9_2:before {
+    content: "9";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best9_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
+}
+
+#content ul#solutions li.best10_2 {
+	position: relative;
+	background: transparent url(../image/cup.png) no-repeat 2px 3px;
+}
+
+#content ul#solutions li.best10_2:before {
+    content: "10";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; 
+    font-weight: bold;
+	font-size: 10px;
+    padding: 3px 7px; 
+}
+
+#content ul#solutions li.best10_2:after {
+	position: absolute;
+    content: url(../image/tiger.png);
+	top: 0;
+    left: 0;
+    margin-left: 20px; 
 }
 
 #content ul#solutions li {
@@ -315,7 +791,7 @@ p.fix_height_solution {
 
 #rating li textarea {
 	width: 100%;
-	min-height: 100px;
+	min-height: 50px;
 }
 
 
@@ -331,6 +807,18 @@ p.fix_height_solution {
 	float: left;
 	width: 16px;
 	height: 16px;
+}
+
+.number_in_row{
+	margin-left: 5px;	
+	font-weight: bold;
+}
+.space{
+	margin-left: 20px;		
+}
+.space1{
+	margin-left: 10px;	
+	
 }
 
 .comment_block {
