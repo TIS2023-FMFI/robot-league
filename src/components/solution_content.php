@@ -123,7 +123,7 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 			$html.= "<h2>" . $this->get("solution_rating") . ":</h2>";
 			$html.= "<ul id='rating'><li><textarea name='comment[".$row["id_solution"]."]'>" . str_replace("<br>", "\n", $get_jury_comment["text"]) . "</textarea></li>";
 			$html.= "<li>Body: <input type='number' step='0.1' min='0' max='3' name='rating[".$row["id_solution"]."]' value='" . $get_jury_comment["points"] . "'></li></ul>";
-			$html.= "<li>Interný komentár rozhodcu:<textarea name='internal_comment[".$row["id_solution"]."]' rows='1' cols='20' >" . str_replace("<br>", "\n", $get_jury_comment["internal_comment"]) . "</textarea></li></ul>";
+			$html.= "<li>". $this->get("internal_comment") . ": <textarea name='internal_comment[".$row["id_solution"]."]' rows='1' cols='20' >" . str_replace("<br>", "\n", $get_jury_comment["internal_comment"]) . "</textarea></li></ul>";
 		} else {
 			$get_coment = $this->database->get_coment($row["id_solution"]);
 			$html.= "<h2>" . $this->get("solution_rating") . ":</h2>";
