@@ -80,7 +80,7 @@ CREATE TABLE `comments` (
   `id_user` int(12) NOT NULL,
   `text` text COLLATE utf8_slovak_ci NOT NULL,
   `points` float NOT NULL,
-  `comment` text COLLATE utf8_slovak_ci,
+  `internal_comment` text COLLATE utf8_slovak_ci,
   PRIMARY KEY (`id`),
   KEY `id_solution` (`id_solution`),
   KEY `id_user` (`id_user`)
