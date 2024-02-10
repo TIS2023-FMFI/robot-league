@@ -51,7 +51,7 @@ if (Security::post("profile_update")) {
     }
 
     if (empty($about_update)) {
-        $this->set("profile_error", "City name is required");
+        $this->set("profile_error", "Team description is required");
         return null;
     }
 
