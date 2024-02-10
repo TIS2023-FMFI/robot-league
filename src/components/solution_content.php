@@ -12,7 +12,7 @@ if (isset($team_info["category"])){
 	$category = $team_info["category"];
 }
 
-if ($expired_assignment == 1 && $this->get("user", "admin") != 1) {
+if ($expired_assignment == 0 && $this->get("user", "admin") != 1 && $this->get("user", "jury") != 1) {
 	echo "permission denied";
 	exit;
 }
