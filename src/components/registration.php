@@ -16,6 +16,11 @@ if (Security::post("registration")) {
 		return null;
 	}
 
+	if (empty($about)) {
+		$this->set("registration_error", "Team description is required");
+		return null;
+	}
+
 	if (empty($street_name)) {
 		$this->set("registration_error", "Street name is required");
 		return null;

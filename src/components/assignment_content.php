@@ -33,43 +33,62 @@ if (strtotime($assignment_group["begin"]) < time())
   	$num++;
   }
 }
+$assignment_number = 1;
+$category = 1;
 
-if ($best && $this->get("user", "admin") == 1) {
-	$teams = $this->database->best_solution($assignment_group["id"], $best);
-	$is_best = mysqli_fetch_assoc($teams);
-
-	$teams = $this->database->best_solution($assignment_group["id"], $best);
-	
-	while($teams_row = mysqli_fetch_assoc($teams)) {
-		$is_best = (($teams_row["best"] == 1) ? 0: 1);
-		$this->database->change_best_solution($teams_row["id"], $is_best);
-	}
-	
-	header("Location: " . $this->get("current_url", "best=&group="));
+if ($_SERVER["REQUEST_METHOD"] == "POST") {    
+	foreach ($_POST["category"] AS $key => $value) {
+		if (isset($_POST['submit'][$key])) {
+		$assignment_number = $_POST["assignment_number"][$key];
+		$category = $_POST["category"][$key];
+		$this->database->set_category($key, $category);
+		$this->database->set_best_assignment_number($key, $assignment_number);
+		}	
+		if (isset($_POST['unsubmit'][$key])) {		
+		$this->database->unset_best($key);
+		}
+			
+	}    
 }
+
 
 
 //Show solutions
 if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") == 1 || $this->get("user", "jury") == 1) {
+	$html.= "<form method='post' action=''>";
 	$html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 	$html.= "<ul id=\"solutions\">";
 
 	$solution = $this->database->assignment_solutions($id);
+	$count = $this->database->count_assignments($id);
+    $c = mysqli_fetch_row($count);
+    $count = $c[0];
 	
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="") {
-			$html.= "<li class=\"" . $row["best"] . "\">";
+			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . $row["category"] : "") . "\">";
 
-			$html.= "<div class='commented'>";
+			$html .= "<a href=\"?page=solution&id-assignment=" . $id . "&id-team=" . $row["id_team"] . "\" class='space1'>" . $row["team"] . "</a>";
+			if($this->get("user", "admin") == 1 || $this->get("user", "jury") == 1){
 				if ($this->database->assignment_solutions_comment($_SESSION["user"]["id"], $row["id"]) == 1) {
-					$html.= " <img src='image/tick.png' alt='commented'>";
+					$html .= " <img src='image/tick.png' alt='commented'>";
 				}
-			$html.= "</div>";
-			
-			$html.= "<a href=\"?page=solution&id-assignment=" . $id . "&id-team=" . $row["id_team"] . "\">" . $row["team"] . "</a>";
-			if ($this->get("user", "admin") == 1) {
-				$html.= " <a href='?page=assignment&id=" . $id . "&best=" . $row["id_team"] . "' class='best_alert'>Best</a>";
 			}
+			
+			if ($this->get("user", "admin") == 1) {
+				$html .= " Kategória: <select name='category[".$row["id_team"]."]'>";
+				$html .= "<option value='1'" . ($row["category"] == 1 ? " selected" : "") . ">Zajace</option>";
+				$html .= "<option value='2'" . ($row["category"] == 2 ? " selected" : "") . ">Tigre</option>";
+				$html .= "</select>";
+				$html .= " Úloha č.: <input type='number' step='1' min='1' max='". $count ."' name='assignment_number[".$row["id_team"]."]' value='" . ($row["best_assignment_number"] == 0 ? "1" : $row["best_assignment_number"]) . "'>";
+					if ($row["best"] == 'best'){
+						$html .= "<input type='submit' name='unsubmit[".$row["id_team"]."]' value='Remove Best'>";
+					}																														
+					else{
+							$html .= "<input type='submit' name='submit[".$row["id_team"]."]' value='Best'>";
+					}
+			}
+			
 			if ($row["id_team"]==$this->get("user", "id")){
 				$adminButton = ">";
 				if ($this->get("user", "admin") == 1){
@@ -88,6 +107,7 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 	}
 
 	$html.= "</ul>";
+	$html .= "</form>";
 }
 
 return $html;

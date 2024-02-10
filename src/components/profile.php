@@ -21,9 +21,7 @@ $this->set("zip", $userInfo['zip']);
 $this->set("category", $userInfo['category']);
 $this->set("about", $userInfo['description']);
 $currentYear = date('Y');
-echo $currentYear;
 $exists_solution = $this->database->check_for_this_years_solution($userId, $currentYear);
-echo $exists_solution;
 
 if (!$userInfo) {
     die('No user information found.');
@@ -31,11 +29,9 @@ if (!$userInfo) {
 
 if($exists_solution){
     $this->set("solution_exists" , True);
-    echo "yesh";
 }
 else{
     $this->set("solution_exists" , False);
-    echo "nyo";
 }
 
 //Profile edit
@@ -51,6 +47,11 @@ if (Security::post("profile_update")) {
 
     if (empty($city_update)) {
         $this->set("profile_error", "City name is required");
+        return null;
+    }
+
+    if (empty($about_update)) {
+        $this->set("profile_error", "Team description is required");
         return null;
     }
 

@@ -118,15 +118,41 @@ class Database {
 	
 	
 	public function assignment_solutions($id_group) {
-		$sql = "SELECT S.id, IF(S.best = 1, 'best', '') AS best, T.name AS team, T.id_user AS id_team, S.id_assignment AS id_assignment ";
+		$sql = "SELECT S.id, IF(S.best = 1, 'best', '') AS best, T.name AS team, T.id_user AS id_team, S.id_assignment AS id_assignment, C.category, S.best_assignment_number ";
 		$sql.= "FROM assignments AS A ";
 		$sql.= "LEFT JOIN solutions AS S ";
 		$sql.= "ON A.id = S.id_assignment ";
 		$sql.= "LEFT JOIN teams AS T ";
 		$sql.= "ON S.id_user = T.id_user ";
+		$sql.= "LEFT JOIN comments AS C ";
+		$sql.= "ON S.id = C.id_solution ";
 		$sql.= "WHERE A.id_group = '" . $id_group . "' ";
 		$sql.= "GROUP BY T.name ";
 		$sql.= "ORDER BY S.best DESC, T.name ASC";
+		$result = mysqli_query($this->conn, $sql);
+		return $result;
+	}
+	
+	public function assignment_solutions_each_solution($id_group,$id_user) {
+		$sql = "SELECT S.id, IF(S.best = 1, 'best', '') AS best, T.name AS team, T.id_user AS id_team, C.points, C.internal_comment, C.category, S.text, C.id_user AS id_jury ";
+		$sql.= "FROM solutions AS S ";
+		$sql.= "LEFT JOIN assignments AS A ";
+		$sql.= "ON A.id = S.id_assignment ";
+		$sql.= "LEFT JOIN teams AS T ";
+		$sql.= "ON S.id_user = T.id_user ";
+		$sql.= "LEFT JOIN comments AS C ";
+		
+		$sql.= "ON S.id = C.id_solution AND C.id_user = '".$id_user."' ";
+		$sql.= "WHERE A.id_group = '" . $id_group . "' ";
+		$sql.= "ORDER BY S.best DESC, T.name ASC";
+		$result = mysqli_query($this->conn, $sql);
+		return $result;
+	}
+	
+	public function count_assignments($id_group) {
+		$sql = "SELECT count(A.id) ";
+		$sql.= "FROM assignments AS A ";
+		$sql.= "WHERE A.id_group = '" . $id_group . "' ";
 		$result = mysqli_query($this->conn, $sql);
 		return $result;
 	}
@@ -475,17 +501,44 @@ class Database {
 	}
 	
 	
-	public function set_comment($solution, $id_user, $text, $points) {
+public function set_comment($solution, $id_user, $text, $points, $internal_comment=NULL) {
 		$sql = "INSERT INTO comments ";
-		$sql.= "(id_solution, id_user, text, points) VALUES ";
-		$sql.= "('" . $solution . "', '" . $id_user . "', '" . $text . "', '" . $points . "')";
+		$sql.= "(id_solution, id_user, text, points, category, internal_comment) VALUES ";
+		$sql.= "('" . $solution . "', '" . $id_user . "', '" . $text . "', '" . $points . "', '" . $internal_comment . "')";
 		mysqli_query($this->conn, $sql);
 	}
 	
+	public function set_category($id_team, $category) {		
+		$sql.= "UPDATE solutions AS S ";
+		$sql.= "LEFT JOIN assignments AS A ";
+		$sql.= "ON A.id = S.id_assignment ";
+		$sql.= "LEFT JOIN teams AS T ";
+		$sql.= "ON S.id_user = T.id_user ";
+		$sql.= "LEFT JOIN comments AS C ";
+		$sql.= "ON S.id = C.id_solution ";
+		$sql.= "SET C.category = " . $category . " ";
+		$sql.= "WHERE T.id_user = '" . $id_team . "'";
+		mysqli_query($this->conn, $sql);
+	}	
 	
-	public function update_comment($solution, $id_user, $text, $points) {
+	public function set_best_assignment_number($id_team, $number) {		
+		$sql.= "UPDATE solutions ";
+		$sql.= "SET best_assignment_number = '" . $number . "', best = 1 ";
+		$sql.= "WHERE id_user = '" . $id_team . "'";
+		mysqli_query($this->conn, $sql);
+	}
+	
+		public function unset_best($id_team) {		
+		$sql.= "UPDATE solutions ";
+		$sql.= "SET best_assignment_number = 0, best = 0 ";
+		$sql.= "WHERE id_user = '" . $id_team . "'";
+		mysqli_query($this->conn, $sql);
+	}	
+	
+	
+	public function update_comment($solution, $id_user, $text, $points, $internal_comment=NULL) {
 		$sql = "UPDATE comments ";
-		$sql.= "SET text = '" . $text . "', points = '" . $points . "' ";
+		$sql.= "SET text = '" . $text . "', points = '" . $points . "', internal_comment = '" . $internal_comment . "' ";
 		$sql.= "WHERE id_solution = '" . $solution . "' AND id_user = '" . $id_user . "'";
 		mysqli_query($this->conn, $sql);
 	}

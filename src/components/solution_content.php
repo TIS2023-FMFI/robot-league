@@ -21,6 +21,7 @@ if ($expired_assignment == 1 && $this->get("user", "admin") != 1) {
 if (Security::post("create_comment") == "ok") {
 	foreach ($_POST["comment"] AS $key => $value) {
 		$rating = $_POST["rating"][$key];
+		$internal_comment = $_POST["internal_comment"][$key];
 		if ($rating > 3) $rating = 3;
 		if ($rating < 0) $rating = 0;
 
@@ -32,14 +33,16 @@ if (Security::post("create_comment") == "ok") {
 				$key,
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
-				$rating
+				$rating,
+				str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key]))
 			);
 		} else {
 			$this->database->update_comment(
 				$key,
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
-				$rating
+				$rating,
+				str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key]))
 			);
 		}
 	}
@@ -120,6 +123,7 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 			$html.= "<h2>" . $this->get("solution_rating") . ":</h2>";
 			$html.= "<ul id='rating'><li><textarea name='comment[".$row["id_solution"]."]'>" . str_replace("<br>", "\n", $get_jury_comment["text"]) . "</textarea></li>";
 			$html.= "<li>Body: <input type='number' step='0.1' min='0' max='3' name='rating[".$row["id_solution"]."]' value='" . $get_jury_comment["points"] . "'></li></ul>";
+			$html.= "<li>Interný komentár rozhodcu:<textarea name='internal_comment[".$row["id_solution"]."]' rows='1' cols='20' >" . str_replace("<br>", "\n", $get_jury_comment["internal_comment"]) . "</textarea></li></ul>";
 		} else {
 			$get_coment = $this->database->get_coment($row["id_solution"]);
 			$html.= "<h2>" . $this->get("solution_rating") . ":</h2>";
@@ -199,6 +203,79 @@ if ($this->get("user", "admin") == 1 || $this->get("user", "jury") == 1) {
 }
 
 $html.= "</form>";
+
+
+
+if($this->get("user", "jury") == 1){
+
+$html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
+	$html.= "<ul id=\"solutions\">";
+
+	$solution = $this->database->assignment_solutions_each_solution($id_group,$this->get("user", "id"));
+	$num = 1;
+	
+	
+	
+	while ($row = mysqli_fetch_assoc($solution)) {
+		if ($row["team"]!="" ) {
+			
+			$get_photos = $this->database->get_solution_photos($row["id"]);
+			$get_video = $this->database->get_solution_video($row["id"]);
+			$get_program = $this->database->get_solution_program($row["id"]);
+			
+					
+			$html.= "<div>";	
+			if ($this->database->assignment_solutions_comment($_SESSION["user"]["id"], $row["id"]) == 1) {
+					$html.= " <img src='image/tick.png' alt='commented'>  ";		
+				}
+			$html.= " <span class='number_in_row'>". $num ." </span>";
+			
+			$html.= " <span class = 'space' title='Body'>". $row["points"] ." </span>";	
+			$html.= " <span class = 'space1'> </span>";	
+			
+			$number_of_words = str_word_count($row["text"]);
+			$html.= "<a>";
+			$html.= " <img src='image/text.png' alt='text' title = 'Počet slov riešenia: ". $number_of_words ."' >  ";								
+			$html.= "</a>";	
+			
+			$number_of_phostos = mysqli_num_rows($get_photos);
+			$html.= "<a>";
+			$html.= " <img src='image/image.png' alt='photo' title = 'Počet obrázkov riešenia: ". $number_of_phostos ."' >  ";								
+			$html.= "</a>";	
+			
+			while($solution_video = mysqli_fetch_assoc($get_video)) {								
+				$html .= "<a href='https://www.youtube.com/watch?v=" . $solution_video["link"] . "' target='_blank'>";
+				$html .= "<img src='image/youtube.png' alt='video' title='video'>";
+				$html .= "</a>";								
+			}
+						
+			while($solution_program = mysqli_fetch_assoc($get_program)) {
+				$html.= "<a href='components/download_attachment.php?id=" . $solution_program["token"] . "'>";
+				$html.= " <img src='image/program.png' alt='". $solution_program["original_name"] ."' title = '". $solution_program["original_name"] ."' >  ";								
+				$html.= "</a>";				
+			}
+					
+			
+			$html.= "<a href=\"?page=solution&id-assignment=" . $id_group . "&id-team=" . $row["id_team"] . "\">" . $row["team"] . "</a> ";
+			
+			
+			if ($row["internal_comment"] != null) {
+			$html.= " <textarea name='internal_comment_[".$row["id"]."]' rows='1' cols='100' readonly >" . str_replace("<br>", "\n", $row["internal_comment"]) . "</textarea>";	
+			}
+			$html.= "</div>";		
+					
+			
+			$html.= "</li>";
+			
+			$num += 1;
+		}
+		
+	}
+
+	$html.= "</ul>";
+
+}
+
 
 return $html;
 
