@@ -21,7 +21,6 @@ if ($expired_assignment == 0 && $this->get("user", "admin") != 1 && $this->get("
 if (Security::post("create_comment") == "ok") {
 	foreach ($_POST["comment"] AS $key => $value) {
 		$rating = $_POST["rating"][$key];
-		$internal_comment = $_POST["internal_comment"][$key];
 		if ($rating > 3) $rating = 3;
 		if ($rating < 0) $rating = 0;
 
@@ -34,7 +33,7 @@ if (Security::post("create_comment") == "ok") {
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
 				$rating,
-				str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key]))
+				($this->get("user", "jury") == 1 ? str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key])) : "")
 			);
 		} else {
 			$this->database->update_comment(
@@ -42,7 +41,7 @@ if (Security::post("create_comment") == "ok") {
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
 				$rating,
-				str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key]))
+				($this->get("user", "jury") == 1 ? str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key])) : "")
 			);
 		}
 	}

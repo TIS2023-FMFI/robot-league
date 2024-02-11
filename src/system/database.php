@@ -503,7 +503,7 @@ class Database {
 	
 public function set_comment($solution, $id_user, $text, $points, $internal_comment=NULL) {
 		$sql = "INSERT INTO comments ";
-		$sql.= "(id_solution, id_user, text, points, category, internal_comment) VALUES ";
+		$sql.= "(id_solution, id_user, text, points, internal_comment) VALUES ";
 		$sql.= "('" . $solution . "', '" . $id_user . "', '" . $text . "', '" . $points . "', '" . $internal_comment . "')";
 		mysqli_query($this->conn, $sql);
 	}
