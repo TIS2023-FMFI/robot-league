@@ -835,10 +835,6 @@ p.fix_height_solution {
 /* GOOGLE LOGIN */
 
 @media screen and (max-width: 767px) {
-	#loginBox {
-		display: none;
-	}
-	
 	#loginBtn {
 		width: 100%
 	}
