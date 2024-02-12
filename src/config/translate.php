@@ -140,6 +140,7 @@ class Translate {
 		$this->set("save_rating", "Uložiť hodnotenie", "Save rating", "Bewertung speichern");
 		$this->set("rating_was_saved", "Hodnotenie bolo uložené.", "Rating was saved.", "Bewertung wurde gespeichert");
         $this->set("admin_solution_update", "Upraviť riešenie", "Edit solution", "Bearbeiten Sie die Lösung");
+		$this->set("internal_comment", "Interný komentár rozhodcu", "Internal referee commentary", "Interner Schiedsrichterkommentar");
 
         // Solution preview
         $this->set("solution_preview", "Náhľad riešenia", "Solution preview", "Lösungsvorschau");

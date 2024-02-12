@@ -21,7 +21,6 @@ if ($expired_assignment == 0 && $this->get("user", "admin") != 1 && $this->get("
 if (Security::post("create_comment") == "ok") {
 	foreach ($_POST["comment"] AS $key => $value) {
 		$rating = $_POST["rating"][$key];
-		$internal_comment = $_POST["internal_comment"][$key];
 		if ($rating > 3) $rating = 3;
 		if ($rating < 0) $rating = 0;
 
@@ -34,7 +33,7 @@ if (Security::post("create_comment") == "ok") {
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
 				$rating,
-				str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key]))
+				($this->get("user", "jury") == 1 ? str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key])) : "")
 			);
 		} else {
 			$this->database->update_comment(
@@ -42,7 +41,7 @@ if (Security::post("create_comment") == "ok") {
 				$this->get("user", "id"),
 				str_replace("\n", "<br>", Security::whatever($_POST["comment"][$key])),
 				$rating,
-				str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key]))
+				($this->get("user", "jury") == 1 ? str_replace("\n", "<br>", Security::whatever($_POST["internal_comment"][$key])) : "")
 			);
 		}
 	}
@@ -123,7 +122,7 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 			$html.= "<h2>" . $this->get("solution_rating") . ":</h2>";
 			$html.= "<ul id='rating'><li><textarea name='comment[".$row["id_solution"]."]'>" . str_replace("<br>", "\n", $get_jury_comment["text"]) . "</textarea></li>";
 			$html.= "<li>Body: <input type='number' step='0.1' min='0' max='3' name='rating[".$row["id_solution"]."]' value='" . $get_jury_comment["points"] . "'></li></ul>";
-			$html.= "<li>Interný komentár rozhodcu:<textarea name='internal_comment[".$row["id_solution"]."]' rows='1' cols='20' >" . str_replace("<br>", "\n", $get_jury_comment["internal_comment"]) . "</textarea></li></ul>";
+			$html.= "". $this->get("internal_comment") . ": <textarea name='internal_comment[".$row["id_solution"]."]' rows='1' cols='105' >" . str_replace("<br>", "\n", $get_jury_comment["internal_comment"]) . "</textarea></ul>";
 		} else {
 			$get_coment = $this->database->get_coment($row["id_solution"]);
 			$html.= "<h2>" . $this->get("solution_rating") . ":</h2>";
