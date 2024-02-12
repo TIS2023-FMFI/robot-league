@@ -28,7 +28,7 @@ if (strtotime($assignment_group["begin"]) < time())
   	) {
 		$team = $this->database->getUserAndTeamInfo($_SESSION["user"]["id"]);
 		$html.= "<p class='alert alert-info'>" . $this->get("category_info") . $this->get($team["category"]) . ".</p>";
-  		$html.= "<a href='?page=new-solution&id-assignment=" . $row["id"] . "'>" . $this->get("assignment_solutions_update") . " " . $num . "</a>";
+  		$html.= "<a href='?page=new-solution&id-assignment=" . $row["id"] . "&id-team=" . $_SESSION["user"]["id"] . "'>" . $this->get("assignment_solutions_update") . " " . $num . "</a>";
   	}
   	$num++;
   }
