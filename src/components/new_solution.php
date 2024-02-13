@@ -14,7 +14,7 @@ if (isset($_GET["id-team"])){
 
 $userInfo = $this->database->getUserAndTeamInfo($userId);
 $assignment = $this->database->assignment($id_assignment);
-if (empty($team["category"])) {
+if (empty($userInfo["category"])) {
 	$this->set("cat_info", "<p class='alert alert-info'>" . $this->get("category_empty") . "</p>");
 } else {
 	$this->set("cat_info", "<p class='alert alert-info'>" . $this->get("category_info") . $this->get($userInfo["category"]) . ".</p>");
