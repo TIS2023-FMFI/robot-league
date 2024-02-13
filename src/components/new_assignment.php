@@ -27,6 +27,7 @@ if (Security::post("save_assignment") == "ok") {
 	
 	// upload image
 	$total = count($_FILES["upload"]["name"]);
+	echo $total;
 	for($i=0; $i<$total; $i++) {
 		$tmpFilePath = $_FILES["upload"]["tmp_name"][$i];
 
