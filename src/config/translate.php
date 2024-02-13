@@ -51,7 +51,7 @@ class Translate {
         $this->set("reg_city", "Mesto", "City", "Stadt");
         $this->set("reg_street_name", "Ulica", "Street", "Straße");
         $this->set("reg_zip", "PSČ", "ZIP Code", "PLZ");
-        $this->set("reg_category", "Ketegória", "Category", "Kategorie");
+        $this->set("reg_category", "Kategória", "Category", "Kategorie");
         $this->set("reg_about", "Niečo o vás", "About your team", "Über ihr Team");
         $this->set("reg_skleague", "Slovenská liga", "Slovak league", "Slowakische Liga");
         $this->set("reg_openleague", "Open liga", "Open league", "Open Liga");
