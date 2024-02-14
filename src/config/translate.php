@@ -53,11 +53,12 @@ class Translate {
         $this->set("reg_zip", "PSČ", "ZIP Code", "PLZ");
         $this->set("reg_category", "Kategória", "Category", "Kategorie");
         $this->set("reg_about", "Niečo o vás", "About your team", "Über ihr Team");
-        $this->set("reg_skleague", "Slovenská liga", "Slovak league", "Slowakische Liga");
-        $this->set("reg_openleague", "Open liga", "Open league", "Open Liga");
+        $this->set("reg_skleague", "Slovenský tím", "Slovak team", "Slowakische Team");
+        $this->set("reg_openleague", "Medzinárodný tím", "International team", "Internationales Team");
         $this->set("reg_rabbits", "Zajace", "Rabbits", "Hasen");
         $this->set("reg_tigers", "Tigre", "Tigers", "Tiger");
         $this->set("reg_register", "Zaregistrovať sa", "Proceed with registration", "Anmelden");
+        $this->set("reg_addrdisclaimer", "Adresu potrebujeme evidovať, aby sme Vám vedeli poslať diplom a ceny.", "Please supply the address so that we can send you an award.", "Bitte geben Sie die Adresse an, damit wir Ihnen eine Auszeichnung zusenden können");
         $this->set("gdpr", "GDPR: Robotická liga je on-line platforma na zdieľanie riešení. Za obsah a súhlas " .
                                    " s publikovaním riešení, fotodokumentácie a videodokumentácie zodpovedá ten, kto " .
                                    " riešenia na stránku nahral. Riešenia zostávajú v archíve zverejnené neobmedzene. " .
