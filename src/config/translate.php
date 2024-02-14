@@ -86,7 +86,18 @@ class Translate {
                                    " wurden. Wenn Sie verlangen, dass ein Teil Ihres Inhalts von der Website entfernt wird oder Ihre E-Mail-Adresse " .
                                    " aus unserem Archiv, senden Sie eine E-Mail an: info@robotika.sk. Mit der Teilnahme an diesem Wettbewerb bestätigen " .
                                    " Sie, dass Sie diesen Regeln zustimmen und diese einhalten.");
-    
+        $this->set("empty_city", "Vyžaduje sa názov mesta", "City name is required", "Der Name der Stadt ist erforderlich");
+        $this->set("empty_desc", "Vyžaduje sa popis tímu", "Team description is required", "Eine Teambeschreibung ist erforderlich");
+        $this->set("empty_street", "Vyžaduje sa názov ulice", "Street name is required", "Straßenname ist erforderlich");
+        $this->set("invalid_zip", "Vyžaduje sa platné 5-miestne PSČ", "A valid 5-digit ZIP code is required", "Eine gültige 5-stellige Postleitzahl ist erforderlich");
+        $this->set("empty_cat", "Kategória je povinná", "Category is required", "Kategorie ist erforderlich");
+        $this->set("invalid_mail", "Neplatný email", "Invalid email", "Ungültige E-Mail");
+        $this->Set("used_mail", "Email už existuje!", "Email already exists!", "E-Mail existiert bereits!");
+        $this->set("short_pw", "Heslo musí mať aspoň 6 znakov!", "Password must have at least 6 characters!", "Das Passwort muss mindestens 6 Zeichen lang sein!");
+        $this->Set("diff_pw", "Heslá sa nezhodujú", "Passwords do not match", "Passwörter stimmen nicht überein");
+        $this->set("short_team", "Tím musí mať aspoň 5 znakov", "Team name must have at least 5 characters", "Der Teamname muss mindestens 5 Zeichen lang sein");
+        $this->set("used_team", "Tento team už existuje!", "This team already exists!", "Dieses Team existiert bereits!");
+
         // Assignment content
         $this->set("assignment_task", "Úloha", "Task", "Auftrag");
         $this->set("assignment_deadline", "Riešenie možno odovzdávať do", "Deadline of this assignment is set to", "Die Frist für diese Aufgabe ist festgelegt auf");
