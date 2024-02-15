@@ -561,8 +561,8 @@ public function set_comment($solution, $id_user, $text, $points, $internal_comme
 		return mysqli_num_rows(mysqli_query($this->conn, $sql));
 	}
 	
-	public function get_team($id_team) {
-		$sql = "SELECT * ";
+	public function get_team_category($id_team) {
+		$sql = "SELECT category ";
 		$sql.= "FROM teams ";
 		$sql.= "WHERE id_user = '" . $id_team . "'";
 		return mysqli_query($this->conn, $sql);
