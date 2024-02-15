@@ -1,6 +1,11 @@
 <?php
 $lang = ["sk", "en", "de"][$_SESSION["lang"]];
 $id_team = Security::get("id-team");
+
+if (!($this->get("user", "admin") == 1 || ($this->get("user", "id")!=null && $this->get("user", "id") == $id_team))){
+    return "Permission denied!";
+}
+
 $userInfo = $this->database->getUserAndTeamInfo($id_team);
 
 $id_assignment = Security::get("id-assignment");
@@ -25,7 +30,7 @@ $html.= (($userInfo["sk_league"] == 1)? "": "Open league");
 $html.= "<h2><a id='task' href=?page=assignment&id=" . $id_group . ">" . $this->get("solution_assignment") . ": " . $assignment[$lang . "_title"] . "</a></h2>";
 
 
-$html.= "<div>" . html_entity_decode($_GET["solution"]) . "</div>";
+$html.= "<div>" . html_entity_decode($solution["text"]) . "</div>";
 
 
 $html.= "<h2>" . $this->get("solution_photos") . ":</h2>";

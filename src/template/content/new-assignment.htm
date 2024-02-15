@@ -66,8 +66,16 @@ tinymce.init({
 	extended_valid_elements: "+iframe[src|width|height|name|align|class]"
 });
 document.getElementById('preview_button').addEventListener('click', function () {
-    var formData = new FormData(document.getElementById('assignment_form'));
-    var params = new URLSearchParams(formData);
-    window.open('./?page=assignment-preview&' + params.toString(), '_blank');
+	const assignment_id = findAssignmentIdInURL(window.location.href);
+    window.open('./?page=assignment-preview&id='+ assignment_id, '_blank');
 });
+
+function findAssignmentIdInURL(url){
+	const start = url.indexOf("id=") + 3;
+	let id = "";
+	for (let i=start; i<url.length; i++){
+		id += url[i];
+	}
+	return id;
+}
 </script>
