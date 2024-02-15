@@ -561,10 +561,10 @@ public function set_comment($solution, $id_user, $text, $points, $internal_comme
 		return mysqli_num_rows(mysqli_query($this->conn, $sql));
 	}
 	
-	public function get_team($team) {
+	public function get_team($id_team) {
 		$sql = "SELECT * ";
 		$sql.= "FROM teams ";
-		$sql.= "WHERE name = '" . $team . "'";
+		$sql.= "WHERE id_user = '" . $id_team . "'";
 		return mysqli_query($this->conn, $sql);
 	}
 	
