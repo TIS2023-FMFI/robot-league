@@ -268,6 +268,7 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 				$html.= " <img src='image/program.png' alt='". $solution_program["original_name"] ."' title = '". $solution_program["original_name"] ."' >  ";								
 				$html.= "</a>";				
 			}
+			$html.= " <span class = 'space1'> </span>";	
 			$html.= "</td>";	
 					
 			$html.= "<td>";	
