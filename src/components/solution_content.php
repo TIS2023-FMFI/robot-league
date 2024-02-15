@@ -223,48 +223,64 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 			$get_video = $this->database->get_solution_video($row["id"]);
 			$get_program = $this->database->get_solution_program($row["id"]);
 			
-					
+			$html.= "<tr>";	
 			$html.= "<div>";	
 			if ($this->database->assignment_solutions_comment($_SESSION["user"]["id"], $row["id"]) == 1) {
-					$html.= " <img src='image/tick.png' alt='commented'>  ";		
+					$html.= "<td>";	
+					$html.= " <img src='image/tick.png' alt='commented'>  ";	
+					$html.= "</td>";	
 				}
+			$html.= "<td>";	
 			$html.= " <span class='number_in_row'>". $num ." </span>";
+			$html.= "</td>";	
 			
+			$html.= "<td>";	
 			$html.= " <span class = 'space' title='Body'>". $row["points"] ." </span>";	
-			$html.= " <span class = 'space1'> </span>";	
+			$html.= "</td>";	
+			//$html.= " <span class = 'space1'> </span>";	
 			
 			$number_of_words = str_word_count($row["text"]);
+			$html.= "<td>";	
 			$html.= "<a>";
 			$html.= " <img src='image/text.png' alt='text' title = 'Počet slov riešenia: ". $number_of_words ."' >  ";								
 			$html.= "</a>";	
+			$html.= "</td>";	
 			
 			$number_of_phostos = mysqli_num_rows($get_photos);
+			$html.= "<td>";	
 			$html.= "<a>";
 			$html.= " <img src='image/image.png' alt='photo' title = 'Počet obrázkov riešenia: ". $number_of_phostos ."' >  ";								
 			$html.= "</a>";	
+			$html.= "</td>";	
 			
+			$html.= "<td>";	
 			while($solution_video = mysqli_fetch_assoc($get_video)) {								
 				$html .= "<a href='https://www.youtube.com/watch?v=" . $solution_video["link"] . "' target='_blank'>";
 				$html .= "<img src='image/youtube.png' alt='video' title='video'>";
 				$html .= "</a>";								
 			}
+			$html.= "</td>";	
 						
+			$html.= "<td>";				
 			while($solution_program = mysqli_fetch_assoc($get_program)) {
 				$html.= "<a href='components/download_attachment.php?id=" . $solution_program["token"] . "'>";
 				$html.= " <img src='image/program.png' alt='". $solution_program["original_name"] ."' title = '". $solution_program["original_name"] ."' >  ";								
 				$html.= "</a>";				
 			}
+			$html.= "</td>";	
 					
-			
+			$html.= "<td>";	
 			$html.= "<a href=\"?page=solution&id-assignment=" . $id_group . "&id-team=" . $row["id_team"] . "\">" . $row["team"] . "</a> ";
+			$html.= "</td>";	
 			
-			
+			$html.= "<td>";	
 			if ($row["internal_comment"] != null) {
 			$html.= " <textarea name='internal_comment_[".$row["id"]."]' rows='1' cols='100' readonly >" . str_replace("<br>", "\n", $row["internal_comment"]) . "</textarea>";	
 			}
-			$html.= "</div>";		
-					
+			$html.= "</td>";	
 			
+			$html.= "</div>";		
+			$html.= "</tr>";	
 			
 			
 			$num += 1;
