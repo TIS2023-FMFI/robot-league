@@ -51,13 +51,14 @@ class Translate {
         $this->set("reg_city", "Mesto", "City", "Stadt");
         $this->set("reg_street_name", "Ulica", "Street", "Straße");
         $this->set("reg_zip", "PSČ", "ZIP Code", "PLZ");
-        $this->set("reg_category", "Ketegória", "Category", "Kategorie");
+        $this->set("reg_category", "Kategória", "Category", "Kategorie");
         $this->set("reg_about", "Niečo o vás", "About your team", "Über ihr Team");
-        $this->set("reg_skleague", "Slovenská liga", "Slovak league", "Slowakische Liga");
-        $this->set("reg_openleague", "Open liga", "Open league", "Open Liga");
+        $this->set("reg_skleague", "Slovenský tím", "Slovak team", "Slowakische Team");
+        $this->set("reg_openleague", "Medzinárodný tím", "International team", "Internationales Team");
         $this->set("reg_rabbits", "Zajace", "Rabbits", "Hasen");
         $this->set("reg_tigers", "Tigre", "Tigers", "Tiger");
         $this->set("reg_register", "Zaregistrovať sa", "Proceed with registration", "Anmelden");
+        $this->set("reg_addrdisclaimer", "Adresu potrebujeme evidovať, aby sme Vám vedeli poslať diplom a ceny.", "Please supply the address so that we can send you an award.", "Bitte geben Sie die Adresse an, damit wir Ihnen eine Auszeichnung zusenden können");
         $this->set("gdpr", "GDPR: Robotická liga je on-line platforma na zdieľanie riešení. Za obsah a súhlas " .
                                    " s publikovaním riešení, fotodokumentácie a videodokumentácie zodpovedá ten, kto " .
                                    " riešenia na stránku nahral. Riešenia zostávajú v archíve zverejnené neobmedzene. " .
@@ -85,7 +86,18 @@ class Translate {
                                    " wurden. Wenn Sie verlangen, dass ein Teil Ihres Inhalts von der Website entfernt wird oder Ihre E-Mail-Adresse " .
                                    " aus unserem Archiv, senden Sie eine E-Mail an: info@robotika.sk. Mit der Teilnahme an diesem Wettbewerb bestätigen " .
                                    " Sie, dass Sie diesen Regeln zustimmen und diese einhalten.");
-    
+        $this->set("empty_city", "Vyžaduje sa názov mesta", "City name is required", "Der Name der Stadt ist erforderlich");
+        $this->set("empty_desc", "Vyžaduje sa popis tímu", "Team description is required", "Eine Teambeschreibung ist erforderlich");
+        $this->set("empty_street", "Vyžaduje sa názov ulice", "Street name is required", "Straßenname ist erforderlich");
+        $this->set("invalid_zip", "Vyžaduje sa platné 5-miestne PSČ", "A valid 5-digit ZIP code is required", "Eine gültige 5-stellige Postleitzahl ist erforderlich");
+        $this->set("empty_cat", "Kategória je povinná", "Category is required", "Kategorie ist erforderlich");
+        $this->set("invalid_mail", "Neplatný email", "Invalid email", "Ungültige E-Mail");
+        $this->Set("used_mail", "Email už existuje!", "Email already exists!", "E-Mail existiert bereits!");
+        $this->set("short_pw", "Heslo musí mať aspoň 6 znakov!", "Password must have at least 6 characters!", "Das Passwort muss mindestens 6 Zeichen lang sein!");
+        $this->Set("diff_pw", "Heslá sa nezhodujú", "Passwords do not match", "Passwörter stimmen nicht überein");
+        $this->set("short_team", "Tím musí mať aspoň 5 znakov", "Team name must have at least 5 characters", "Der Teamname muss mindestens 5 Zeichen lang sein");
+        $this->set("used_team", "Tento team už existuje!", "This team already exists!", "Dieses Team existiert bereits!");
+
         // Assignment content
         $this->set("assignment_task", "Úloha", "Task", "Auftrag");
         $this->set("assignment_deadline", "Riešenie možno odovzdávať do", "Deadline of this assignment is set to", "Die Frist für diese Aufgabe ist festgelegt auf");
@@ -161,6 +173,7 @@ class Translate {
         $this->set("Zajace", "Zajace", "Rabbits", "Hasen");
         $this->set("Tigre", "Tigre", "Tigers", "Tiger");
         $this->set("category_info", "Váš tím je v kategórii ", "Your team is in the category ", "Ihr Team ist in der Kategorie ");
+	$this->set("category_empty", "Váš tím nemá zvolenú kategóriu.", "Your team does not have a category selected.", "Für Ihr Team ist keine Kategorie ausgewählt.");
         $this->set("unsaved_changes", "Máte neuložené zmeny.", "You have unsaved changes.", "Sie haben nicht gespeicherte Änderungen.");
 	}
 }

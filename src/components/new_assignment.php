@@ -102,6 +102,9 @@ $get_image_assignment = $this->database->get_image_assignment($id);
 while ($row = mysqli_fetch_assoc($get_image_assignment)) {
 	$image_path = "attachments/assignments/" . $id . "/images/" . $row["id"] . "." . $row["extension"];
 
+	if (!file_exists(getcwd() . "/" . $image_path))
+	  $image_path = "attachments/assignments/" . $id . "/images/big/" . $row["id"] . "." . $row["extension"];
+
 	$images.= "<li><img src='" . $image_path . "'>";
 	$images.= "<a href='?page=new-assignment&id=" . $id . "&delete_image=" . $row["id"] . "'>Zmazať</a>";
 	$images.= "<a href='#' rel='" . $image_path . "' class='add_image_to_tiny'>Vložiť</a>";
