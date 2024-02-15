@@ -70,13 +70,13 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 	
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="") {
-			$team = $this->database->get_team($row["team"]);
+			/*$team = $this->database->get_team($row["team"]);
 			$team_cat = $team["category"];
 			$cat = 1;
 			if ($team_cat == "Tigre"){
 				$cat = 2;
-			}
-			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . $cat : "") . "\">";
+			}*/
+			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . $row["category"] : "") . "\">";
 
 			$html .= "<a href=\"?page=solution&id-assignment=" . $id . "&id-team=" . $row["id_team"] . "\" class='space1'>" . $row["team"] . "</a>";
 			if($this->get("user", "admin") == 1 || $this->get("user", "jury") == 1){
@@ -88,8 +88,8 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 			
 			if ($this->get("user", "admin") == 1) {
 				$html .= " Kategória: <select name='category[".$row["id_team"]."]'>";
-				$html .= "<option value='1'" . ($cat == 1 ? " selected" : "") . ">Zajace</option>";
-				$html .= "<option value='2'" . ($cat == 2 ? " selected" : "") . ">Tigre</option>";
+				$html .= "<option value='1'" . ($row["category"] == 1 ? " selected" : "") . ">Zajace</option>";
+				$html .= "<option value='2'" . ($row["category"] == 2 ? " selected" : "") . ">Tigre</option>";
 				$html .= "</select>";
 				$html .= " Úloha č.: <input type='number' step='1' min='1' max='". $count ."' name='assignment_number[".$row["id_team"]."]' value='" . ($row["best_assignment_number"] == 0 ? "1" : $row["best_assignment_number"]) . "'>";
 					if ($row["best"] == 'best'){
