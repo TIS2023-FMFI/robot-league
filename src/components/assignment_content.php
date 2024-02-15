@@ -70,9 +70,9 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 	
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="") {
-			/*$team = $this->database->get_team($row["team"]);
+			$team = $this->database->get_team($row["team"]);
 			$team_cat = $team["category"];
-			$cat = 1;
+			/*$cat = 1;
 			if ($team_cat == "Tigre"){
 				$cat = 2;
 			}*/
