@@ -68,15 +68,17 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
     $c = mysqli_fetch_row($count);
     $count = $c[0];
 	
+	$team = $this->database->get_teams($row["id_team"]);
+	
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="") {
 			$team = $this->database->get_team($row["id_team"]);
-			$team_cat = $team["name"];
+			$team_cat = $this->database->find_team($row["id_team"]);
 			/*$cat = 1;
 			if ($team_cat == "Tigre"){
 				$cat = 2;
 			}*/
-			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . $row["category"] : "") . "\">";
+			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . $team_cat : "") . "\">";
 
 			$html .= "<a href=\"?page=solution&id-assignment=" . $id . "&id-team=" . $row["id_team"] . "\" class='space1'>" . $row["team"] . "</a>";
 			if($this->get("user", "admin") == 1 || $this->get("user", "jury") == 1){
