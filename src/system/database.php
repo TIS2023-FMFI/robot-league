@@ -565,7 +565,7 @@ public function set_comment($solution, $id_user, $text, $points, $internal_comme
 		$sql = "SELECT * ";
 		$sql.= "FROM teams ";
 		$sql.= "WHERE id_user = '" . $id_team . "'";
-		return mysqli_num_rows(mysqli_query($this->conn, $sql));
+		return mysqli_query($this->conn, $sql);
 	}
 	
 	

@@ -68,12 +68,11 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
     $c = mysqli_fetch_row($count);
     $count = $c[0];
 	
-	$team = $this->database->get_teams($row["id_team"]);
 	
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="") {
 			$team = $this->database->get_team($row["id_team"]);
-			$team_cat = $this->database->get_team($row["id_team"]);
+			$team_cat = $team["category"];
 			/*$cat = 1;
 			if ($team_cat == "Tigre"){
 				$cat = 2;
