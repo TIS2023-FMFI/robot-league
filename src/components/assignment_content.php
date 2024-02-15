@@ -77,7 +77,7 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 			if ($teamm_cat == "Tigre"){
 				$cat = 2;
 			}*/
-			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . $team_cat : "") . "\">";
+			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . 1 : "") . "\">";
 
 			$html .= "<a href=\"?page=solution&id-assignment=" . $id . "&id-team=" . $row["id_team"] . "\" class='space1'>" . $row["team"] . "</a>";
 			if($this->get("user", "admin") == 1 || $this->get("user", "jury") == 1){
