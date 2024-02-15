@@ -273,6 +273,7 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 					
 			$html.= "<td>";	
 			$html.= "<a href=\"?page=solution&id-assignment=" . $id_group . "&id-team=" . $row["id_team"] . "\">" . $row["team"] . "</a> ";
+			$html.= " <span class = 'space1'> </span>";	
 			$html.= "</td>";	
 			
 			$html.= "<td>";	
