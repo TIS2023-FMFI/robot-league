@@ -79,10 +79,12 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 				}
 			}
 			
+			$team = $this->database->find_team($row["team"]);
+			$cat = $team["category"];
 			if ($this->get("user", "admin") == 1) {
 				$html .= " Kategória: <select name='category[".$row["id_team"]."]'>";
-				$html .= "<option value='1'" . ($row["category"] == 1 ? " selected" : "") . ">Zajace</option>";
-				$html .= "<option value='2'" . ($row["category"] == 2 ? " selected" : "") . ">Tigre</option>";
+				$html .= "<option value='1'" . ($cat == 1 ? " selected" : "") . ">Zajace</option>";
+				$html .= "<option value='2'" . ($cat == 2 ? " selected" : "") . ">Tigre</option>";
 				$html .= "</select>";
 				$html .= " Úloha č.: <input type='number' step='1' min='1' max='". $count ."' name='assignment_number[".$row["id_team"]."]' value='" . ($row["best_assignment_number"] == 0 ? "1" : $row["best_assignment_number"]) . "'>";
 					if ($row["best"] == 'best'){
