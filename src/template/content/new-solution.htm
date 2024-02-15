@@ -91,12 +91,10 @@ $("#photo_gallery li a").fancybox({
 
 <script>
 	document.getElementById('preview_button').addEventListener('click', function () {
-    var formData = new FormData(document.getElementById('assignment_form'));
-    var params = new URLSearchParams(formData);
 	var url = window.location.href;
 	var urlParams = new URLSearchParams(window.location.search);
 	var assignment_id = urlParams.get('id-assignment');
 	var id_team = urlParams.get('id-team');
-    window.open('./?page=solution-preview&id-assignment=' + assignment_id + '&id-team=' + id_team + '&' + params.toString(), '_blank');
+    window.open('./?page=solution-preview&id-assignment=' + assignment_id + '&id-team=' + id_team, '_blank');
 });
 </script>
