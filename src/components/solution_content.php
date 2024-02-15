@@ -214,7 +214,7 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 	$num = 1;
 	
 	
-	
+	//$html.= "<table>";	
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="" ) {
 			
@@ -264,7 +264,7 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 			$html.= "</div>";		
 					
 			
-			$html.= "</li>";
+			//$html.= "</li>";
 			
 			$num += 1;
 		}
