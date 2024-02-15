@@ -71,8 +71,9 @@ if (strtotime($assignment_group["end"]) < $today || $this->get("user", "admin") 
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="") {
 			$team = $this->database->find_team($row["team"]);
-			$cat = $team["category"];
-			($cat == "Tigre" ? $cat = 2 : 1);
+			$team_cat = $team["category"];
+			$cat = 1;
+			($team_cat == "Tigre" ? $cat = 2 : $cat = 1);
 			$html .= "<li class=\"" . $row["best"] . "" . ($row["best"] == "best" ? $row["best_assignment_number"] : "") . "" . ($row["best"] == "best" ? "_" . $cat : "") . "\">";
 
 			$html .= "<a href=\"?page=solution&id-assignment=" . $id . "&id-team=" . $row["id_team"] . "\" class='space1'>" . $row["team"] . "</a>";
