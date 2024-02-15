@@ -236,8 +236,9 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 			
 			$html.= "<td>";	
 			$html.= " <span class = 'space' title='Body'>". $row["points"] ." </span>";	
+			$html.= " <span class = 'space1'> </span>";	
 			$html.= "</td>";	
-			//$html.= " <span class = 'space1'> </span>";	
+			
 			
 			$number_of_words = str_word_count($row["text"]);
 			$html.= "<td>";	
