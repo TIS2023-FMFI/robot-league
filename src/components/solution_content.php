@@ -277,7 +277,7 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 			
 			$html.= "<td>";	
 			if ($row["internal_comment"] != null) {
-			$html.= " <textarea name='internal_comment_[".$row["id"]."]' rows='1' cols='100' readonly >" . str_replace("<br>", "\n", $row["internal_comment"]) . "</textarea>";	
+			$html.= " <textarea name='internal_comment_[".$row["id"]."]' rows='1' cols='90' readonly >" . str_replace("<br>", "\n", $row["internal_comment"]) . "</textarea>";	
 			}
 			$html.= "</td>";	
 			
