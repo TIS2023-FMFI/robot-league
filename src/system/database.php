@@ -561,6 +561,13 @@ public function set_comment($solution, $id_user, $text, $points, $internal_comme
 		return mysqli_num_rows(mysqli_query($this->conn, $sql));
 	}
 	
+	public function get_team_category($id_team) {
+		$sql = "SELECT category ";
+		$sql.= "FROM teams ";
+		$sql.= "WHERE id_user = '" . $id_team . "'";
+		return mysqli_query($this->conn, $sql);
+	}
+	
 	
 	public function back_solution($id_group) {
 		$sql = "SELECT S.id, IF(S.best = 1, 'best', '') AS best, T.name AS team, T.id_user AS id_team ";
