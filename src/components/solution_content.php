@@ -225,11 +225,11 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 			
 			$html.= "<tr>";	
 			$html.= "<div>";	
-			if ($this->database->assignment_solutions_comment($_SESSION["user"]["id"], $row["id"]) == 1) {
+			/*if ($this->database->assignment_solutions_comment($_SESSION["user"]["id"], $row["id"]) == 1) {
 					$html.= "<td>";	
 					$html.= " <img src='image/tick.png' alt='commented'>  ";	
 					$html.= "</td>";	
-				}
+				}*/
 			$html.= "<td>";	
 			$html.= " <span class='number_in_row'>". $num ." </span>";
 			$html.= "</td>";	
