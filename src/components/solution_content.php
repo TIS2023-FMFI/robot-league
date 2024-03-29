@@ -61,6 +61,8 @@ $html.= "<form method='post'><input type='hidden' name='create_comment' value='o
 
 
 $get_solution = $this->database->solution_content($id_group, $id_team);
+
+$solution_count = 0;
 while($row = mysqli_fetch_assoc($get_solution)) {
 	$get_photos		= $this->database->get_solution_photos($row["id_solution"]);
 	$get_video			= $this->database->get_solution_video($row["id_solution"]);
@@ -75,17 +77,21 @@ while($row = mysqli_fetch_assoc($get_solution)) {
 	$html.= "<div id='photo_gallery'>";
 
 	while($solution_photo = mysqli_fetch_assoc($get_photos)) {
-		$html.= "<a data-fancybox=\"gallery\" href='components/get_image.php?id=" . $solution_photo["token"] . "&.jpg' rel='group_" . $row["id_solution"] . "'>";
+		$html.= "<a data-fancybox=\"gallery" . $solution_count . "\" href='components/get_image.php?id=" . $solution_photo["token"] . "&.jpg' rel='group_" . $row["id_solution"] . "'>";
 		$html.="<img src='components/get_image.php?id=" . $solution_photo["token"] . "&min=1'>";
 		$html.= "</a>";
 	}
 	$html.= "</div>";
 	$html.= "<script src=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js\"></script>
-    <script>
-      Fancybox.bind('[data-fancybox=\"gallery\"]', {
-        //
-      });    
-    </script>";
+    		 <script>
+    		   Fancybox.bind('[data-fancybox=\"gallery" . $solution_count . "\"]', {
+    		     //
+    		   });    
+    		 </script>
+			 <link
+			   rel=\"stylesheet\"
+			   href=\"https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css\"
+			 />";
 	
 	$html.= "<h2>" . $this->get("solution_videos") . ":</h2>";
 	while($solution_video = mysqli_fetch_assoc($get_video)) {
@@ -214,7 +220,6 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 	$num = 1;
 	
 	
-	$html.= "<table>";	
 	
 	while ($row = mysqli_fetch_assoc($solution)) {
 		if ($row["team"]!="" ) {
@@ -223,74 +228,54 @@ $html.= "<h2>" . $this->get("assignment_solutions") . "</h2>";
 			$get_video = $this->database->get_solution_video($row["id"]);
 			$get_program = $this->database->get_solution_program($row["id"]);
 			
-			$html.= "<tr>";	
+					
 			$html.= "<div>";	
-			/*if ($this->database->assignment_solutions_comment($_SESSION["user"]["id"], $row["id"]) == 1) {
-					$html.= "<td>";	
-					$html.= " <img src='image/tick.png' alt='commented'>  ";	
-					$html.= "</td>";	
-				}*/
-			$html.= "<td>";	
+			if ($this->database->assignment_solutions_comment($_SESSION["user"]["id"], $row["id"]) == 1) {
+					$html.= " <img src='image/tick.png' alt='commented'>  ";		
+				}
 			$html.= " <span class='number_in_row'>". $num ." </span>";
-			$html.= "</td>";	
 			
-			$html.= "<td>";	
 			$html.= " <span class = 'space' title='Body'>". $row["points"] ." </span>";	
 			$html.= " <span class = 'space1'> </span>";	
-			$html.= "</td>";	
-			
 			
 			$number_of_words = str_word_count($row["text"]);
-			$html.= "<td>";	
 			$html.= "<a>";
 			$html.= " <img src='image/text.png' alt='text' title = 'Počet slov riešenia: ". $number_of_words ."' >  ";								
 			$html.= "</a>";	
-			$html.= "</td>";	
 			
 			$number_of_phostos = mysqli_num_rows($get_photos);
-			$html.= "<td>";	
 			$html.= "<a>";
 			$html.= " <img src='image/image.png' alt='photo' title = 'Počet obrázkov riešenia: ". $number_of_phostos ."' >  ";								
 			$html.= "</a>";	
-			$html.= "</td>";	
 			
-			$html.= "<td>";	
 			while($solution_video = mysqli_fetch_assoc($get_video)) {								
 				$html .= "<a href='https://www.youtube.com/watch?v=" . $solution_video["link"] . "' target='_blank'>";
 				$html .= "<img src='image/youtube.png' alt='video' title='video'>";
 				$html .= "</a>";								
 			}
-			$html.= "</td>";	
 						
-			$html.= "<td>";				
 			while($solution_program = mysqli_fetch_assoc($get_program)) {
 				$html.= "<a href='components/download_attachment.php?id=" . $solution_program["token"] . "'>";
 				$html.= " <img src='image/program.png' alt='". $solution_program["original_name"] ."' title = '". $solution_program["original_name"] ."' >  ";								
 				$html.= "</a>";				
 			}
-			$html.= " <span class = 'space1'> </span>";	
-			$html.= "</td>";	
 					
-			$html.= "<td>";	
+			
 			$html.= "<a href=\"?page=solution&id-assignment=" . $id_group . "&id-team=" . $row["id_team"] . "\">" . $row["team"] . "</a> ";
-			$html.= " <span class = 'space1'> </span>";	
-			$html.= "</td>";	
 			
-			$html.= "<td>";	
+			
 			if ($row["internal_comment"] != null) {
-			$html.= " <textarea name='internal_comment_[".$row["id"]."]' rows='1' cols='90' readonly >" . str_replace("<br>", "\n", $row["internal_comment"]) . "</textarea>";	
+			$html.= " <textarea name='internal_comment_[".$row["id"]."]' rows='1' cols='100' readonly >" . str_replace("<br>", "\n", $row["internal_comment"]) . "</textarea>";	
 			}
-			$html.= "</td>";	
-			
 			$html.= "</div>";		
-			$html.= "</tr>";	
+					
 			
+			$html.= "</li>";
 			
 			$num += 1;
 		}
 		
 	}
-	$html.= "</table>";	
 
 	$html.= "</ul>";
 
